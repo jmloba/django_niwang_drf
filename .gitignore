@@ -9,7 +9,7 @@ notes/
 media/
 ab/
 test.rest
-niwangtest.rest
+/niwangtest.rest
 
 ### Django ###
 *.log
