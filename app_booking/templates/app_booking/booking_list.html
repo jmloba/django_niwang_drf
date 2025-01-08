@@ -1,0 +1,107 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<section id="booking-list">
+  <div class="my-container my-container-para d-block" 
+  style="--margin-top:50px; 
+        --margin-right:5%;
+        --margin-left: 5%; "
+  >
+    <div class="header">
+      <div class="heading">
+        <div class="heading-text">
+          <h4 >Your Bookings</h4>
+        </div>
+        <div class="heading-text">
+          <h5 >Welcome <span>{{user}}</span> </h5>
+        </div>
+      </div>
+
+      <div class="div-links">
+        <div class="home-btn">
+          <a href="{% url 'main_page' %}"><i class="bi bi-house-heart"></i></a>
+        </div>
+
+      
+        <div class="other-links">
+          <button class="btn btn-primary btn-mybtn"> <a href="{% url 'app_booking:RoomList' %}">Room List</a></button>
+        </div>
+
+      
+
+  
+      </div>  
+
+
+    </div>
+
+    <div class="booking-elements ">
+
+      {% for booking in booking_list %}
+      <div class="cards">
+        <div class="card-header">
+          <div class="category">
+            <h5>Category: <span>{{booking.get_room_category}}</span></h5>
+          </div>
+        <img src="" alt="">
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="by">
+              <h6><span>Booked by:</span><p>{{booking.user}}</p></h6>
+            </div>
+          </li>
+ 
+          <li class="list-group-item">
+            <div class="from">
+              <h6><span>From:</span><p>{{booking.check_in}}</p></h6>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="to">
+              <h6><span>To:</span><p> {{booking.check_out}}</p></h6>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="beds">
+              <h6>Beds: <span>{{booking.room.beds}}</span> </h6>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="capacity">
+              <h6>Capacity: <span>{{booking.room.capacity}}</span> </h6>
+            </div>
+          </li>
+
+
+        </ul>
+        <div class="card-footer">
+          <div class="cancel">
+            <a href="{{booking.get_cancel_booking_url}}">
+              <i class="bi bi-trash"></i>
+            </a>
+  
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+
+
+    </div>
+
+  </div>
+
+</section>
+<section>
+  <div class="other-links">
+    <button class="btn btn-primary btn-mybtn"> <a href="{% url 'app_booking:RoomList' %}">Room List</a></button>
+
+  </div>
+</section>
+<link rel="stylesheet" href="{% static 'css/custom-booking-list.css' %}">
+
+{% endblock %}

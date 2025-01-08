@@ -1,0 +1,103 @@
+{% extends 'main/base.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<section id="dashboard-product">
+  {%include 'include/user-info.html'%}
+  <div class="body-area">
+    <h1>Product Dashboard</h1>
+    <div class="add-button">
+      <button class="btn btn-mybtn" data-bs-toggle="modal" data-bs-target="#add-product-form">new entry</button>   
+       
+    </div>
+    <main class="table">
+      <section class="table__header"> </section>
+      <section class="table__body"> 
+        <table >
+          <caption> 
+            Task
+          </caption>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>name</th>
+              <th>Category</th>
+
+              <th>cost</th>
+              <th>date</th>
+              <th>description</th>
+              <th colspan="1" >Action</th>
+            </tr>
+          </thead>
+          <tbody  id="tbody" 
+          class="table-body">
+          {% for item in data %}
+            <tr id="task-id-{{item.id}}">
+              <td data-cell="product id">{{item.product_id}}</td>
+              <td data-cell="Name">{{item.name}}</td>
+              <td data-cell="Category">{{item.category_name}}</td>
+              <td data-cell="Cost">{{item.cost}}</td>
+              <td data-cell="Date">{{item.date}}</td>
+              <td data-cell="Description">{{item.description}}</td>
+
+              <td data-cell="View">
+
+                <button class="btn btn-info btn-sm">
+                  <a href="{% url 'app_product:apiclass-ProductDetailView' item.id%}">
+                    <i class="bi bi-eye"></i>
+                  </a>
+                  </button>
+                  &nbsp;&nbsp;
+                  <button class="btn btn-info btn-sm">
+                    <a href="{% url 'app_product:apiclass-ProductUpdateView' item.id%}">
+                      <i class="bi bi-pencil"></i>
+                    </a>
+                    </button>        
+                    &nbsp;&nbsp;
+                    <button class="btn btn-info btn-sm">
+                      <a href="{% url 'app_product:apiclass-ProductDeleteView' item.id%}">
+                        <i class="bi bi-trash"></i>
+                      </a>
+                      </button>                                      
+              </td>
+
+             
+            </tr>   
+  
+          {% endfor %}              
+          </tbody>
+
+        </table>
+      </section>
+      {% include 'include/error-messeges.html'%}
+    </main>
+  </div> 
+</section>
+<!-- modal form  1 -->
+<div class="modal fade" id="add-product-form">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create New MFO</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form id="product-form" method="POST"   action="{% url 'app_product:apiclass-ProductView' %}" 
+         >
+          {% csrf_token %}
+          {% include 'app_product/form-fields-product.html' %}
+          <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-floppy-disk"></i>Submit modal</button>
+        </form>      
+        {% include 'include/error-messeges.html'%}   
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+<link rel="stylesheet" href="{% static 'css/app-task-dashboard.css' %}">
+
+{% endblock %}

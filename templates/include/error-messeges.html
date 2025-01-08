@@ -1,0 +1,12 @@
+
+<!-- for bootstrap 5 -->
+<div id = 'message-section'>
+  {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissible shadow fade show text-center">
+      <button type="button" class="btn btn-primary btn-sm close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+      {{ message | safe }}
+    </div>
+{% endfor %}
+</div>

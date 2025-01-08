@@ -1,0 +1,47 @@
+
+#home .sidebar-area{
+  background-color: rgb(230, 190, 190);
+}
+#home  .dashboard-user {
+  justify-content: space-evenly;
+  margin :10px 10px;
+
+} 
+#home .detail-area{
+ 
+  display : block;
+}
+#home .gen-info{
+  background-color: rgba(255, 228, 196, 0.478);
+  display : flex;
+  
+}
+
+#home .dashboard-details,
+#home .dashboard-info{
+  display : flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+}
+.card {
+  margin : 1em 1em;
+
+}
+
+#home .gen-info .card{
+  background-color: beige;
+  margin-bottom : 5px;
+  
+}
+
+#home .gen-details{
+  background-color: rgba(125, 182, 172, 0.478);
+  display : flex;
+  flex-wrap: wrap;
+}
+#home .gen-details .card{
+  margin-bottom : 1em;
+  background-color: rgb(160, 160, 114);
+}
+

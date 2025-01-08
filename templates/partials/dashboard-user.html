@@ -1,0 +1,22 @@
+{% load static %}
+<div class="dashboard-user">
+
+  <div class="card" >
+    <a class="btn btn-warning" href="{% url 'home' %}">&#8592;Back to Profile</a>
+    <hr>
+    <h3 style="text-align : center;">User Profile</h3>
+    <hr>
+    <img class="profile-pic" src="{{request.user.userprofile.avatar.url}}" alt="profile pic">
+    
+  
+    <div class="card-body">
+      <h5 class="card-title">Username :  {{request.user}}</h5>
+      
+    </div>
+
+  </div>
+
+
+
+</div>
+<link rel="stylesheet" href="{% static 'css/custom-home.css' %}">

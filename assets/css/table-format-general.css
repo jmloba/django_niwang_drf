@@ -1,0 +1,239 @@
+
+.table-container{
+  
+  background-color: rgba(199, 234, 224, 0.31);
+
+  background-color: rgba(226, 226, 96, 0.838);
+  padding : 1rem;
+  /* height: 84vh; */
+  /* max-height: 84vh; */
+  
+  
+}
+.table-container-wrapper{
+  background-color: rgb(14, 174, 65); 
+  padding : 1rem 1.5rem; 
+  display : block;
+  justify-content: center;
+  align-items: center;
+  border-radius: .6rem;
+  width : 100%;
+  box-shadow: 2px 5px 10px rgb(46, 46, 243);
+  
+}
+
+.table-container-wrapper h3{
+  background-color : rgb(255, 255, 255);
+  color: blue;
+  height : 20rem;
+
+}
+
+.table-wrapper{
+  background-color :rgb(0, 208, 255);
+  padding : 1rem 1rem;
+  width :95%;
+  max-height : calc(98% - 1.6rem) ;
+  margin :.8rem auto;
+  border-radius: .6rem;
+  overflow :scroll;
+}
+ 
+.table-wrapper::-webkit-scrollbar{
+  width: .9rem;
+  height : .9rem;
+  
+
+}
+.table-wrapper::-webkit-scrollbar-thumb{
+border-radius: .5rem;
+background-color: var(--table-wrapper-color);
+visibility: hidden;
+
+}
+.table-wrapper:hover::-webkit-scrollbar-thumb{
+  visibility: visible;
+  cursor: pointer;
+
+}
+table{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+table,
+table th, 
+table td{
+  padding: .5rem ;
+  font-size :14px;
+  
+}
+th,td{
+  /* border-spacing: 1em; */
+  border-collapse: separate;
+}
+
+
+table thead tr th {
+  font-size: 16px;
+   position : sticky;
+  top :0;
+  left :0;
+ 
+  background-color :teal;
+  color : rgb(233, 228, 228);
+ 
+  text-align: left;
+  margin-bottom: 5px;
+ 
+  /* max-width: 100%; */
+  overflow: hidden;
+  text-overflow :ellipsis ;
+  white-space: nowrap;   
+}
+
+/* -----   begin zebra  ------*/
+table tbody tr td {
+  background-color: var(  --table-td-background );
+  text-transform: capitalize;
+  color : blue;
+   text-align: left;
+  /* max-width: 100%; */
+   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+
+/* zebra strip */
+tbody  tr:nth-child(odd){
+  background-color: var(--table-td-zebra );
+}
+/* -----   end zebra  ------*/
+
+
+/* hover on record */
+tbody tr:hover{
+  background-color: var(--table-record-hover );
+  color           : var(--table-record-hover-font-color ) !important;
+  
+} 
+
+
+table img{
+  height : 35px;
+  width:  35px;
+  border-radius: 50%;
+}
+.col-to-the-right{
+  text-align: right;  
+}
+.col-number,
+.col-amount{
+  text-align: right;
+  font-weight : 500;
+}
+.col-amount{
+  color : rgb(135, 76, 13);
+}
+.col-amount-tax{
+  color : rgb(7, 99, 66);
+}
+.col-amount-total{
+  color : rgb(242, 15, 15);
+}
+
+.status{
+  background-color: rgb(225, 5, 5);
+  padding : 3px;
+  margin:  0 2px;
+  border-radius: 30px;
+  color : white;
+  text-align: center;
+  
+}
+.status.posted{
+  background-color: rgb(46, 249, 164);  
+  color: rgb(3, 61, 3);
+  
+}
+
+.status.stat-deleted{
+  
+  background-color: var(--color-go-signal);  
+  color: white;
+}
+.status.stat-notdeleted{
+  background-color: var(--color-bloody-red);  
+  color: white;
+}
+
+
+
+@media (max-width:700px) {
+  .table-container-wrapper{
+    background-color: #eaeaef3b;
+    padding :0 ;
+    margin :0 ;
+    overflow: auto;
+    }
+    .table-container-wrapper::-webkit-scrollbar{
+      width: .9rem;
+      height : .9rem;
+      
+    
+    }
+    .table-container-wrapper::-webkit-scrollbar-thumb{
+    border-radius: .5rem;
+    background-color: var(--table-wrapper-color);
+    visibility: hidden;
+    
+    }
+    .table-container-wrapper:hover::-webkit-scrollbar-thumb{
+      visibility: visible;
+      cursor: pointer;
+    
+    }    
+
+
+
+  table thead{
+    display:none;
+  }
+
+
+  table th, 
+  table td{
+    /* display : block; */
+    padding : 0rem;
+    
+    
+  }
+  table tr{
+    display : block;
+  }
+
+  table tbody tr td {
+    text-align: right;
+    display :block;
+    
+  }
+  table tbody tr td::before{
+    content : attr(data-cell)" : ";
+    text-transform: capitalize;
+    float : left;
+    color : black;
+  } 
+  .status{
+   width :5rem;
+   margin : auto;
+   /* content : attr(posted)" : "; */
+   float : right;
+
+
+
+  }
+  
+}

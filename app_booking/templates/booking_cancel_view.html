@@ -1,0 +1,102 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<section id="room-cancellation">
+  <div class="my-container my-container-para " 
+  style="--margin-top:50px; 
+        --margin-right:15%;
+        --margin-left: 15%; "
+  >
+    <div class="container">
+      
+      <div class="row" >
+          <div class="col-md-6 row-left">
+            <div class="div-links">
+              <div class ="home-btn">
+                <a href="{% url 'main_page' %}"><i class="bi bi-house-heart"></i></a>
+              </div>
+
+              <h4>Booking Cancellation</h4>
+            </div>
+            <hr>
+            <div class="room-pic">
+              <img class="card-img-top " src="{% static 'images/IMG_1493.jpg' %}" alt="Card image cap">
+
+            </div>
+            
+        
+          </div>
+          <div class ="col-md-6 row-right">
+            <div class="card" >
+              <div class="card-body">
+                <h5 class="card-title">Room Category <span> {{room_category}}</span></h5>
+                <!-- <p class="card-text">Lorem ipsum </p> -->
+
+                <form id = "booking-form"action="" method = 'POST'>
+                  {% csrf_token %}
+                          
+                  <h4 class="question-cancel">Are you sure you want to cancel this booking?</h4>
+                  <h6>
+                    <hr>
+                    <!-- <p>{{booking.room.number}} </p>  -->
+                    <p>Category : <span>{{booking.get_room_category}}</span> </p>
+
+                    <!-- <p>{{booking}}</p> -->
+<!-- 
+                    <p>Rooms :<span>{{booking.room.number}}</span></p> -->
+                    <p>Beds : <span>{{booking.room.beds}}</span></p>
+                    <!-- <p>Category :<span>{{booking.room.category}}</span></p> -->
+                    <p>Check-in : <span>{{booking.check_in}}</span></p>                    
+                    <p>Check-out : <span>{{booking.check_out}}</span></p>   
+
+                  </h6>  
+                    
+
+    
+                  <div class="input-div">
+                  <button class="btn btn-primary btn-mybtn" type="submit">Cancel Booking</button>
+                  </div>   
+                  
+    
+    
+    
+                </form>
+              </div>
+    
+            </div>
+
+            <div class="other-links mt-2 d-flex
+            ">
+              <div class="link1">
+                <button class="btn btn-primary btn-mybtn"> <a href="{% url 'app_booking:BookingList' %}">Booking List</a></button>
+
+              </div>
+              <div class="link2">
+                <button class="btn btn-primary btn-mybtn"> <a href="{% url 'app_booking:RoomList' %}">Room List</a></button>
+
+              </div>
+    
+            </div>
+            
+          
+            
+          </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+  
+</section>
+
+
+
+
+<link rel="stylesheet" href="{% static 'css/custom-booking-cancellation.css' %}">
+{% endblock %}

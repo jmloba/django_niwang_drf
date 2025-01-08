@@ -1,0 +1,32 @@
+{% extends 'main/base.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<section id="dashboard-product">
+  {%include 'include/user-info.html'%}
+  <div class="body-area">
+    <h1>Product Details</h1>
+    
+    <main class="table">
+      <section class="table__header"> </section>
+      <section class="table__body"> 
+        <div class="form-view">
+          <form action="">
+            {%csrf_token%}
+            {%include 'app_product/form-fields-product.html'%}
+          </form>
+
+        </div>
+ 
+      </section>
+      {% include 'include/error-messeges.html'%}
+    </main>
+  </div> 
+</section>
+
+
+<link rel="stylesheet" href="{% static 'css/app-product.css' %}">
+
+{% endblock %}

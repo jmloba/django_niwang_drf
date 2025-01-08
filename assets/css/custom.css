@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+  margin: 0;
+  padding : 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body{
+  
+  height: 100%;
+
+  /* background: #7abecc !important; */
+  
+  background : url(/assets/images/wallpaper.jpg) center /cover;
+  
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size : cover;
+  background-attachment: fixed;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style:normal;
+  list-style: None;
+  text-decoration: none;
+
+  display : flex;
+  justify-content : center;
+  align-items: center;
+  
+}
+
+ul li{
+  list-style: None;
+}
+
+img{
+  /* display : block; */
+  width: 10em;
+  /* max-width : 100%; */
+  height : auto;
+}
+.main-section {
+  background-color : var(--main-section );
+  margin-top:2em;
+}
+.body-area{
+  
+  background-color: var(--table-body-area) !important;
+  margin :0 1em;
+  padding : 1em 1em;
+}
+
+#error-messages,
+#login-messages{
+  color:rgb(240, 45, 35);
+}
+.login_btn {
+  width: 100%;
+  background: #33ccff !important;
+  color: white !important;
+}
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.login_container {
+  padding: 0 2rem;
+}
+.input-group-text {
+  background: #f7ba5b !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+
+.btn-mybtn {
+  background-color:var(--color-fb-blue );
+  text-decoration: None;
+  display:inline-block;
+  padding : 5px 20px;
+  color : white; 
+  border-radius: 30px;
+}
+
+.btn-mybtn,
+.btn-mybtn a{
+  text-decoration: None;
+  color : white;
+  
+}
+
+.btn-mybtn:hover {
+  background-color: #13b990;
+  color : yellow;
+  font-weight :600;
+}
+
+.home-btn{
+  color:var(--color-fb-blue );
+  font-size: 20px;
+}
+
+
+.center {
+  margin: auto;
+  margin-top: 5px;
+  width: 50%;
+  border: 3px solid var(--border-gold);
+  padding: 10px;
+  width : auto;
+}
+
+.div-links{
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+
+/* data */
+
+
+
+.data-view{
+  background-color: #f7ba5b;
+}
+
+
+.invoice-summary-div{
+  margin:1em 2em;
+}
+
+
+.row-box{
+  margin-bottom : 5px;
+}
+#notary-entry .btn{ 
+  max-width         :  100%;
+
+}
+
+.modal-dialog .modal-header{
+  background-color:var(--modal-title-background);
+  display           : flex;
+  justify-content   : space-evenly;
+}
+
+.alert{
+  color             :blue;
+}
+
+
+/* form */
+.update-history {
+  display : block;
+  background-color : rgb(116, 116, 169);
+  
+  margin  : auto;
+
+}
+
+
+form{
+  background-color: #d4d3cd;
+  border-radius: 10px;;
+  padding : 1em 1em;
+  
+  width: 90%;
+  margin : auto;
+  
+}
+form field,
+form label {
+  color : blue;
+  height : 1.2em;
+  font-size: 15px;
+
+}
+.user-info{
+  background-color : rgba(227, 216, 70, 0.627);
+  padding : 0;
+  display:flex;
+  justify-content: right;
+
+  
+}
+
+
+.user-info:first-child{
+  margin-right: auto;
+}
+.user-info-details p {
+  color : black;
+  justify-content: right;
+  align-items: end;
+  margin :5px;
+
+}
+.user-info-details p span {
+  color : red;
+}
+
+
+
+
+
+
+/* for messages */
+#message-section .alert{
+margin :1% 10%;
+}
+
+.table__body caption{
+  background-color: var(--caption-background-color);
+  padding-left : 3rem;
+  color :var( --color-fb-blue     );
+  font-size: 12px;
+}
+.section-container{
+  background-color: red;
+  display: flex;
+}
+
+@media (max-width:700px){
+
+  .body-area {
+    background-color: var(--table-body-area);
+    margin: 0; 
+    padding :0;
+  }
+
+
+
+
+ 
+}
+
+

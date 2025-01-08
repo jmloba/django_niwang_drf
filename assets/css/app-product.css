@@ -1,0 +1,11 @@
+main.table{
+  height: 90vh;
+  background-color : rgba(123, 123, 251, 0.382) !important;
+}
+.form-view{
+  height : 100%;
+}
+.table__body{
+  background-color: aquamarine;
+  height : 100%;
+}

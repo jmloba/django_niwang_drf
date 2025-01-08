@@ -1,0 +1,27 @@
+{% extends  'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="article_deail-view">
+  <div class="body-area"> 
+    <div class="detail-title">
+      <h3 class="page-title-color mb-2">{{data.title}}</h3>
+    </div>
+    <div class="detail-body">
+      <div class="detail-body-item detail-body-image">
+        <img class= "article-image" src="{{data.thumb}}" alt="picture"   >
+
+      </div>
+      <div class="detail-body-item detail-body-text">
+        <p>{{data.body}}</p>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<link rel="stylesheet" href="{% static 'css/app-articles.css' %}">
+{% endblock %}

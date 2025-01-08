@@ -1,0 +1,78 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<section id="room-detail-view">
+  <div class="section-container"   >
+
+      
+      <div class="row " >
+          <div class="col-md-6 row-left">
+
+            {%include 'app_booking/headerlink-room-detail.html' %}
+
+            <hr>
+            <div class="room-image" >
+              <img class="card-img " src="{% static 'images/IMG_1493.jpg' %}" alt="Card image cap">
+            </div>
+    
+          </div>
+
+          <div class ="col-md-6 row-right">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Room Category <span> {{room_category}}</span></h5>
+
+                <p class="card-text">Lorem ipsum dolor sit amet consectetute nesciunt nisi iure, impedit beatae error recusandae odio voluptatum!</p>
+
+                <form id = "booking-form"action="" method = 'POST'>
+                  {% csrf_token %}
+                  <div class="input-div">
+                    <label id="input-checkin-label" for="id_check_in">From</label>
+
+                    <input type="datetime-local" id="id_check_in" name = 'check_in'>
+                  </div>
+                 
+                  
+                  <div class="input-div">
+                    <label id="input-checkout-label" for="id_check_out">To</label>
+                    <input type="datetime-local" id="id_check_out" name = 'check_out'>
+                  </div>
+                  <hr>
+    
+                  <div class="input-div">
+                  <button class="btn btn-primary btn-mybtn" type="submit">Book the Room </button>
+                  </div>   
+                  
+    
+    
+    
+                </form>
+              </div>
+    
+            </div>
+
+            <div class="other-links mt-2">
+              <div class="link1">
+
+              </div>
+              <div class="link2">
+
+              </div>
+    
+            </div>
+          </div>
+      </div>
+
+  </div>
+
+
+  
+</section>
+
+<link rel="stylesheet" href="{% static 'css/custom-booking-detailview.css' %}">
+
+
+
+{% endblock %}

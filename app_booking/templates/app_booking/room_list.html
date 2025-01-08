@@ -1,0 +1,50 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<section id="room-list">
+  <div class="my-container my-container-para " 
+  style="--margin-top:50px; 
+        --margin-right:5%;
+        --margin-left: 5%; "
+  >
+    <div class="container">
+      <div class="home">
+
+        <div class="heading">Choose Room</div>
+        <div>
+        {%include 'app_booking/headerlink-room-booking.html' %}
+        </div>
+
+      </div>
+      
+      <div class="row">
+        {% for room_category , room_url in room_list %}
+        <div class="card" style="width: 18rem;">
+          {% if room_category == "NON-AC" %}
+          <img class="card-img-top" src="{% static 'images/category/non_ac.jpg' %}" alt="Card image cap">
+          {% endif %}
+
+          {%  if room_category == "AC" %}
+          <img class="card-img-top" src="{% static 'images/category/with_ac.jpg' %}" alt="Card image cap">          
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{room_category }}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="{{room_url}}" class="btn btn-primary btn-mybtn">Book this room</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+<link rel="stylesheet" href="{% static 'css/custom-booking.css' %}">
+
+{% endblock %}

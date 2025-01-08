@@ -1,0 +1,108 @@
+.side-bar{
+  background-color: rgb(42, 86, 188);
+  backdrop-filter: blur(15px);
+  width: 25%;
+  height : 100vh;
+  position : fixed;
+  top :0;
+  left: -100%;
+  overflow-y: auto;
+  /* opacity : .3; */
+  transition: .6s ease;
+  z-index: 100;
+  font-size: 18px;
+
+}
+
+/* icon color  */
+.icon1-submenu {
+  color : rgb(142, 196, 240);
+}
+
+.side-bar .menu{
+  width : 100%;
+  margin-top : 3.5rem;
+  
+
+}
+.side-bar .menu .item{
+  position : relative;
+  cursor: pointer;
+    
+}
+.side-bar .menu .item a{
+  color : rgb(243, 238, 238);
+  /* background : rgb(69, 73, 84); */
+  text-decoration: None;
+  display : block;
+  padding : 5px 30px;
+  line-height : 20px;
+
+    
+}
+.side-bar.active{
+  left:0;
+}
+
+.side-bar .menu .item a:hover{
+  color :rgb(40, 33, 242);
+  background-color: rgb(200, 183, 115);
+  transition : .5s ease;
+}
+.side-bar .menu .item i{
+  margin-right :15px;
+}
+/* second level */
+.side-bar .menu .item a .dropdown{
+  position : absolute;
+  right : 0;
+  margin: 5px;
+  transition : .3s ease;
+}
+
+
+.menu .item .sub-menu{
+  color :rgb(40, 33, 242);
+  display : None;
+
+  margin: 10px;
+
+  
+}
+
+
+.side-bar .menu .item .sub-menu a{
+  padding-left: 40px; 
+
+}
+.rotate{
+  transform: rotate(90deg);
+
+}
+.close-btn {
+  position : absolute;
+  color : white;
+  font-size: 20px;
+  right :0;
+  
+  margin : 25px;
+  cursor : pointer;
+
+} 
+.menu-btn{
+  position : absolute;
+  color : white;
+  font-size: 20px;;
+  margin : 25px;
+  cursor : pointer;
+
+}
+@media (max-width:700px){
+  .close-btn {
+    color: gold;
+  }
+  .menu-btn  .fas.fa-bars{
+    color: rgb(70, 13, 168);
+  }
+}
+

@@ -1,0 +1,30 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<section id="response-room-booked">
+  <div class="my-container my-container-para d-block" 
+  style="--margin-top:50px; 
+        --margin-right:5%;
+        --margin-left: 5%; "
+  >
+    <div>
+      {%include 'app_booking/headerlink-success-booking.html' %}  
+    </div>
+    <div>
+      <div class="failed-booking-details">
+        <h3 >Sorry, this room has been booked</h3>
+        <h5>No available room for this date</h5>
+
+      </div>
+
+    </div>
+    
+  </div>
+
+</section>
+
+<link rel="stylesheet" href="{% static 'css/custom-booking.css' %}">
+
+{% endblock %}

@@ -1,0 +1,54 @@
+
+:root {
+  --color-fb-blue           : rgba(53, 32, 237, 0.885);
+  --color-bloody-red        : #910b0b;
+  --color-go-signal         : #238f47;
+
+  --main-section : #ebefa912;
+  
+
+  --main-table:rgba(81, 135, 158, 0.238);
+  --table:rgba(182, 24, 24, 0.854);
+  --table-header: rgb(177, 149, 39);
+  --table-header-color:white;
+  --table-th-background-color:rgb(138, 199, 236);
+
+  /* highlight on record hover */
+  --table-tr-hover-background:rgba(224, 234, 174, 0.867);
+  --table-tr-hover-color:rgb(19, 33, 224);
+  --modal-title-background: rgb(169, 232, 218);
+  --caption-background-color:var( --modal-title-background);
+  --table-td-background :rgba(227, 228, 219, 0.795);
+  --table-td-zebra :rgba(88, 96, 92, 0.757);
+  --table-record-hover:red; 
+  --table-body-area:rgba(117, 97, 247, 0.157);
+  --table-wrapper-color: rgba(108, 108, 116, 0.69);
+  --table-record-hover-font-color :rgb(4, 48, 18);
+
+  --table-box-shadow: 3px .3rem .3rem rgba(5, 75, 112, 0.401) ;
+  --table-box-shadow-orange: 3px .4rem .4rem rgba(237, 230, 100, 0.817) ;
+
+  --color1 : #071952;
+  --color2 : #088395;
+  --color3 : #032b2a;
+  --color4 : #F2F7A1;
+ 
+
+ 
+  --margin-top        : 0;
+  --margin-right      : 0;
+  --margin-left       : 0;
+  --margin-bottom     : 3em;
+
+  /* table */
+
+
+  /* --box-shadow1 :  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+
+  --box-shadow1       :  0 4px 8px 0 rgba(195, 186, 146, 0.95), 0 6px 20px 0 rgba(169, 201, 230, 0.664);
+
+  --webkit_box_shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+ --moz_box_shadow     :  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
+ }

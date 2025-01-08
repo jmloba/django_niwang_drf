@@ -1,0 +1,40 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="row">
+  <div class="col-lg-6 col-sm-6">
+    {{form.category_name|as_crispy_field}}
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-sm-6">
+    {{form.product_id|as_crispy_field}}
+  </div>
+  <div class="col-lg-6 col-sm-6">
+    {{form.name|as_crispy_field}}
+  </div>
+ 
+
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-6 col-sm-6">
+    {{form.cost|as_crispy_field}}
+  </div>
+ 
+  <div class="col-lg-6 col-sm-6">
+    {{form.date|as_crispy_field}}
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-sm-12">
+    {{form.description|as_crispy_field}}
+  </div>
+
+</div>
+

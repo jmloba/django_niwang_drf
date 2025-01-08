@@ -1,0 +1,118 @@
+{% load static %}
+<div class="menu-btn">
+  <i class="fas fa-bars"></i>
+</div>
+
+<div class="side-bar">
+
+  <div class="close-btn">
+    <i class="fas fa-times"></i>
+
+  </div>
+
+  <div class="menu">
+
+    {% if user.is_authenticated %}
+      {% if not user.user.new_user %}
+      <!-- document entries -->
+      <div class="item ">
+        <a class="sub-btn">
+          <!-- inserting google icons material-symbols-outlined -->
+          <span class="material-symbols-outlined icon1-submenu">post_add</span>
+        &nbsp;
+         Entries
+          <i class="fas fa-angle-right dropdown"></i>
+        </a>
+        <div class="sub-menu">
+          <div class="item ">
+            <a href="{% url 'app_booking:RoomList'%}" class="sub-item">Room List</a>  
+          </div> 
+         
+          <div class="item ">
+            <a href="{% url 'app_articles:dashboard_articles'%}" class="sub-item">Articles</a>  
+          </div>           
+        </div>
+
+      </div>  
+      {% if user.user.Programmers %}
+      <div class="item ">
+        <a class="sub-btn">
+          <!-- inserting google icons material-symbols-outlined -->
+          <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
+        &nbsp;
+        Programmers Sample
+          <i class="fas fa-angle-right dropdown"></i>
+        </a>
+        <div class="sub-menu">
+          <div class="item ">
+            <a href="{% url 'app_product:product-dashboard' %}" class="sub-item">product Dashboard</a>  
+          </div> 
+          <div class="item ">
+            <a href="{% url 'app_product:apiclass-ProductView' %}" class="sub-item">product Dashboard- classbased</a>  
+
+          </div> 
+        
+          <div class="item ">
+            <a href="{% url 'app_product:generic-getProductList' %}" class="sub-item">(generic) product list 2 dashboard</a>  
+
+          </div> 
+          
+
+          generic-getProductList
+        </div>
+      </div>  
+
+      {% endif%}  
+          
+             
+      {% endif%}  
+
+      <div class="item ">
+        <a href="{% url 'accounts:logout-view' %}">
+          <i class="fas fa-info-circle"></i>Logout
+        </a>
+      </div>     
+  
+
+    {% else %}
+      <div class="item ">
+        <a href="{% url 'accounts:login-view' %}"><i class="fa-solid fa-door-open"></i>Login</a>
+      </div>      
+    {% endif %}  
+    <div class="item "><a href="#"><i class="fas fa-info-circle"></i>About</a>
+    </div>          
+
+  </div>
+
+</div>
+  
+<script type="text/javascript">
+  $(document).ready(function(){
+    // jquery for toggle menu
+    $('.sub-btn').click(function(){
+      // e.preventDefault();
+      $(this).next('.sub-menu').slideToggle();
+      $(this).find('.dropdown').toggleClass('rotate');
+
+
+    })
+
+    $('.menu-btn').click(function(){
+      $('.side-bar').addClass('active');
+      $('.menu-btn').css("visibility","hidden")
+
+    })
+
+    $('.close-btn').click(function(){
+      $('.side-bar').removeClass('active')
+      $('.menu-btn').css("visibility","visible")
+
+    })
+  
+
+  })
+
+
+</script>
+
+<link rel="stylesheet" href="{% static 'css/custom-sidebar.css' %}">

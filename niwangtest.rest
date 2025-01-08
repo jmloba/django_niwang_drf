@@ -1,0 +1,48 @@
+
+
+###
+GET http://127.0.0.1:8000/app_product/product-dashboard/
+Content-Type: application/json
+
+
+###
+POST http://127.0.0.1:8000/app_product/api-product-list/
+Content-Type: application/json
+
+{
+  "username":"jovenloba", 
+  "password":"Mike2454"
+}
+
+###
+GET http://127.0.0.1:8000/app_product/api-list-messages/
+Content-Type: application/json
+
+###
+GET http://127.0.0.1:8000/app_product/apiclass-ProductView/
+Content-Type: application/json
+
+
+###
+PUT http://127.0.0.1:8000/app_product/apiclass-ProductUpdateView/22
+Content-Type: application/json
+
+{
+    "id": 21,
+    "product_id": "beer1012202",
+    "name": "sampaxx",
+    "cost": "79.00",
+    "date": "2025-01-03",
+    "description": "the beer mode",
+    "category_name": 2
+}
+
+###
+### rest framework generic
+###
+
+GET http://127.0.0.1:8000/app_product/generic-ProductList/
+Content-Type: application/json
+
+
+

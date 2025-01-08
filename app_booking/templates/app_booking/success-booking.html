@@ -1,0 +1,36 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block content %}
+<section id="success-booking">
+  <div class="my-container my-container-para d-block" 
+  style="--margin-top:50px; 
+        --margin-right:5%;
+        --margin-left: 5%; "
+  >
+  <div class="success-booking-header">
+    <h3 class="text-center">Your Date has been booked</h3>
+    {%include 'app_booking/headerlink-success-booking.html' %}
+  </div>
+  <div class="success-booking-details d-block">
+    <div class="date-from">
+      <h4>{{booking.check_in}}</h4>
+
+    </div>
+    <div class="date-to">
+      <h4>{{booking.check_out}}</h4>
+
+    </div>
+    
+
+  </div>
+
+
+  </div>
+
+</section>
+
+<link rel="stylesheet" href="{% static 'css/custom-booking.css' %}">
+
+{% endblock %}
