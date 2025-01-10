@@ -1,0 +1,50 @@
+{% extends  'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="email_me">
+  <div class="container-lg">
+
+    <div class="my-container my-container-para my-container-bg  align-items-center "
+    style="--margin-top:3em; --margin-right:20%; --margin-left: 20%; "    >
+
+    
+      <h3>Send Email to inquire</h3>
+      
+      <div class="email-form">
+        <form   action="{% url 'app_mail:email_me' %}"  method = 'POST' >
+          {% csrf_token %}
+          <div class="form-content ">
+            <!-- <div class="form-group">
+              <p>Message</p>
+            </div> -->
+
+            <div class="form-group">
+              <label for="id_email_body">Kindly type your message here...</label>
+              {{form.email_body}}
+            </div>
+            <div>
+              <button class='btn button-general'  type="submit"><i class="fa-solid fa-check"></i>Send Email </button>	
+            </div>
+
+          </div>
+
+  
+  
+        </form>
+      </div>
+
+
+
+
+    </div> 
+
+
+ 
+  </div>
+
+</section>
+
+<link rel="stylesheet" href="{% static 'css/custom-email.css' %}">
+
+{% endblock %}

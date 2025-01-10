@@ -1,0 +1,76 @@
+{% extends  'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container" >
+  <div class="my-container my-container-para my-container-bg"
+  style="--margin-top:1em; --margin-left: 20px; --margin-right: 20px; 
+  /* --my-container-background :#ecedd2;  */
+
+  display:block" 
+  >
+
+  <h3>Inbox (Emails)</h3>
+  <div class="media-scroller snaps-inline" >
+    {% for email in emails%}
+      <div class="media-element" >
+        <div class="email-content">
+          
+          <p class="elist-from-mail-title">{{email.user.first_name}} {{email.user.last_name}}</p>
+          <p class="elist-from-mail-body">{{email.email_body}}</p>
+          <p class="elist-from-mail-date">{{email.created_date}}</p>
+          
+          <a href="#"
+          type="button"
+          class="btn btn-primary btn-email-id" 
+          btn-id="btn-email-{{email.id}}"
+          
+          data-email="{{email.email_from}}">       Reply
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="my-container my-container-para my-container-bg"
+  style="--margin-top:3em; --margin-left: 20%; --margin-right: 20%; 
+   " >
+  <h5>Response to Email : </h5>
+
+  <div class="form-group">
+    <form action="{% url 'app_mail:email_list'  %}" method="POST">
+      {% csrf_token %}
+      <div class="form-content">
+        <div class="fieldWrapper">
+          {{ form.email_to.errors }}
+          <label for="{{ form.email_to.id_for_label }}">To:</label>
+          {{ form.email_to }}
+        </div>
+     
+        <div class="fieldWrapper">
+          {{ form.email_body.errors }}
+          <label for="{{ form.email_body.id_for_label }}">Message:</label>
+          {{ form.email_body }}
+        </div>
+        
+        <button class='btn button-general '  type="submit">SendEmail</button>	
+        
+      </div>
+    </form>
+  </div>  
+
+  
+
+</div>
+
+<link rel="stylesheet" href="{% static 'css/custom-email-list.css' %}">
+
+
+{% endblock %}

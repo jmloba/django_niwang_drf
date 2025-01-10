@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="row">
+  <div class="col-lg-6 col-sm-6">
+    {{form.title|as_crispy_field}}
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-sm-12">
+    {{form.description|as_crispy_field}}
+  </div>
+</div>
+

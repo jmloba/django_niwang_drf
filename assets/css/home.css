@@ -1,3 +1,34 @@
+#home {
+
+  margin-top :3em;
+}
+#home .dashboard-user{
+  margin : auto;
+  display : flex;
+  
+  justify-content: center;
+  align-items: center;
+}
+#home .dashboard-user .card {
+
+  width :50%;
+  
+}
+#home .dashboard-user .card .image-div {
+  background-color: blue !important;
+  padding :5px 5px;
+  display: flex ;
+  justify-content: center;
+  align-items: center;
+
+  margin :auto;
+  
+
+
+}
+
+
+
 @media (max-width:700px){
   .dashboard-user .profile-pic{
     width : 10em;

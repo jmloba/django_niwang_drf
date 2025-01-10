@@ -7,7 +7,7 @@ class Room(models.Model):
   ROOM_CATEGORIES=(
     ('YAC','AC'),
     # ('NAC','NON-AC'),
-    # ('DEL','DELUXE'),
+    ('DEL','DELUXE'),
     # ('KIN','KING'),
     # ('QUE','QUEEN'),
 

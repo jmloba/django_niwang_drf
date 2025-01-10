@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, re_path,path
 
-from accounts import views
+from accounts import views, urls
 
 
 app_name ='accounts'

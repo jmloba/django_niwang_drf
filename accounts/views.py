@@ -12,6 +12,7 @@ from django.utils.http import  urlsafe_base64_decode
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
 
 @unauthenticated_user
 def login_view(request):
@@ -28,6 +29,7 @@ def login_view(request):
       
   context = { }
   return render(request,'accounts/login.html',context)
+
 def logout_view(request):
   
     logout(request)
@@ -48,6 +50,8 @@ def register_view(request):
       profile = profile_form.save(commit=False)
       profile.user= user 
       profile.save()
+      token = Token.objects.create(user=user)
+      
      
       # put this as signal
       '''

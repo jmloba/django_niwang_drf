@@ -1,0 +1,82 @@
+{% extends  'main/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<section id="answered-email" >
+  
+  <div class="my-container my-container-para my-container-bg d-block"
+  style="--margin-top:2em; --margin-left: -1; --margin-right: -1;"
+  >
+  <div class="email-links">
+    {%include 'app_mail/headerlink-ans-otherlink.html' %}
+  </div>
+
+    
+      <div class="main-div">
+        <div class="table-outer-wrapper">
+
+          <section class="table__header" >Answered Emails
+  
+          </section>    
+            <div class="table-wrapper notary-table">
+              <section class="table__body">
+                <div class=" table-list">
+                  <table class="table product-table content-table table-striped">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">To</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Package Amount</th>
+                        {% if user.user.programmer_access %}
+                        <th scope="col">ref</th>
+                        {% endif %}
+                        
+                        {% if user.user.programmer_access %}
+                        <th scope="col">Action</th>
+                        {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody id="tbody"  class="table-body">
+                      {% for email in email_ans %}
+                      <tr id="tr-rec-{{email.id}}">
+                        <td  class="td-text" id="tr-email-from-{{email.id}}">{{email.email_to}}</td>
+                        <td class="td-text">{{email.email_body}}</td>
+                        <td class="td-text">{{email.created_date}}</td>
+                        <td class="td-text">{{email.package_amount}}</td>
+
+                        {% if user.user.programmer_access %}
+                        <td class="td-text">{{email.email_ref_id }}</td>
+
+                        {% endif %}
+
+                        {% if user.user.programmer_access %}
+                        <td>
+                          <button id="answered-email" class="btn btn-primary "
+                          type="submit"
+                          data-sid="{{email.id}}" 
+                          data-url="{% url 'app_mail:answered-email-toggle' %}"
+                          >Send    </button>
+                      
+                        </td>
+                        {% endif %}
+                      </tr>
+                      {% endfor %}
+                    
+                    </tbody>
+                  </table>
+                </div>
+              </section>  
+            </div>
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+<link rel="stylesheet" href="{% static 'css/table-css-2.css' %}">
+<link rel="stylesheet" href="{% static 'css/custom-email.css' %}">
+<script src="{% static 'js/app_mail.js' %}" ></script> 
+
+{% endblock %}

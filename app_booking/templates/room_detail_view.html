@@ -1,6 +1,7 @@
 {% extends 'main/base.html'%}
 
 {% load static %}
+{% block title %}Room Detail View {% endblock title%}
 
 {% block content %}
 <section id="room-detail-view">
@@ -9,12 +10,9 @@
       
       <div class="row " >
           <div class="col-md-6 row-left">
-
-            {%include 'app_booking/headerlink-room-detail.html' %}
-
             <hr>
             <div class="room-image" >
-              <img class="card-img " src="{% static 'images/IMG_1493.jpg' %}" alt="Card image cap">
+              <img class="card-img " src="{% static 'images/room-image101.jpg' %}" alt="Card image cap">
             </div>
     
           </div>

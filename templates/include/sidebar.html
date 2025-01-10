@@ -14,57 +14,122 @@
 
     {% if user.is_authenticated %}
       {% if not user.user.new_user %}
-      <!-- document entries -->
-      <div class="item ">
-        <a class="sub-btn">
-          <!-- inserting google icons material-symbols-outlined -->
-          <span class="material-symbols-outlined icon1-submenu">post_add</span>
-        &nbsp;
-         Entries
-          <i class="fas fa-angle-right dropdown"></i>
-        </a>
-        <div class="sub-menu">
-          <div class="item ">
-            <a href="{% url 'app_booking:RoomList'%}" class="sub-item">Room List</a>  
-          </div> 
-         
-          <div class="item ">
-            <a href="{% url 'app_articles:dashboard_articles'%}" class="sub-item">Articles</a>  
-          </div>           
-        </div>
+        <!-- document entries -->
+        <div class="item ">
+          <a class="sub-btn">
+            <!-- inserting google icons material-symbols-outlined -->
+            <span class="material-symbols-outlined icon1-submenu">post_add</span>
+          &nbsp;
+          Entries
+            <i class="fas fa-angle-right dropdown"></i>
+          </a>
+          <div class="sub-menu">
+            <div class="item ">
+              <a href="{% url 'app_booking:RoomList'%}" class="sub-item">Room List</a>  
+            </div> 
+          
+            <div class="item ">
+              <a href="{% url 'app_articles:dashboard_articles'%}" class="sub-item">Articles</a>  
+            </div>           
+          </div>
 
-      </div>  
-      {% if user.user.Programmers %}
-      <div class="item ">
-        <a class="sub-btn">
-          <!-- inserting google icons material-symbols-outlined -->
-          <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
-        &nbsp;
-        Programmers Sample
-          <i class="fas fa-angle-right dropdown"></i>
-        </a>
-        <div class="sub-menu">
+        </div>  
+        {% if user.user.Programmers %}
           <div class="item ">
-            <a href="{% url 'app_product:product-dashboard' %}" class="sub-item">product Dashboard</a>  
-          </div> 
-          <div class="item ">
-            <a href="{% url 'app_product:apiclass-ProductView' %}" class="sub-item">product Dashboard- classbased</a>  
+            <a class="sub-btn">
+              <!-- inserting google icons material-symbols-outlined -->
+              <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
+            &nbsp;
+            Programmers Sample
+              <i class="fas fa-angle-right dropdown"></i>
+            </a>
+            <div class="sub-menu">
+              <div class="item ">
+                <a href="{% url 'app_product:product-dashboard' %}" class="sub-item">product Dashboard</a>  
+              </div> 
+              <div class="item ">
+                <a href="{% url 'app_product:apiclass-ProductView' %}" class="sub-item">product Dashboard- classbased</a>  
 
-          </div> 
-        
-          <div class="item ">
-            <a href="{% url 'app_product:generic-getProductList' %}" class="sub-item">(generic) product list 2 dashboard</a>  
+              </div> 
+            
+              <div class="item ">
+                <a href="{% url 'app_product:listproducts2' %}" class="sub-item">(generic) product list 2 dashboard</a>  
 
-          </div> 
+              </div> 
+              
+
+              generic-getProductList
+            </div>
+          </div>  
           
 
-          generic-getProductList
-        </div>
-      </div>  
+          {% if perms.app_blog.view_post  %} 
+          <div class="item ">
+            <a class="sub-btn">
+              <!-- inserting google icons material-symbols-outlined -->
+              <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
+            &nbsp;
+            Blogs***
+              <i class="fas fa-angle-right dropdown"></i>
+            </a>
+            <div class="sub-menu">
+            
+              <div class="item ">
+                <a href="{% url 'app_blog:postDashboard' %}" class="sub-item">Blog Dashboard</a>  
+              </div> 
+              generic-getProductList
+            </div>
+          </div>            
+          {%endif %}
 
-      {% endif%}  
+          <!-- joven *** permission : {{perms.user}}             -->
+
+          {% if perms.app_mail.view_emaildb %} 
+          <div class="item ">
+            <a class="sub-btn">
+              <!-- inserting google icons material-symbols-outlined -->
+              <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
+            &nbsp;
+            Email***
           
-             
+              <i class="fas fa-angle-right dropdown"></i>
+            </a>
+            <div class="sub-menu">
+              {% if perms.app_mail.add_emaildb %}  
+              <div class="item ">
+                <a href="{% url 'app_mail:email_me' %}" class="sub-item">Create Email</a>  
+              </div> 
+              {%endif %}
+
+              <div class="item ">
+                <a href="{% url 'app_mail:email-list-view' %}" class="sub-item">View  Email Dashboard</a>  
+              </div> 
+              
+            </div>
+          </div>            
+          {%endif %}
+
+
+        {% endif%}  
+        <div class="item ">
+          <a class="sub-btn">
+            <!-- inserting google icons material-symbols-outlined -->
+            <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
+          &nbsp;
+          Members***
+            <i class="fas fa-angle-right dropdown"></i>
+          </a>
+          <div class="sub-menu">
+            
+            <div class="item ">
+              <a href="{% url 'app_members:membersDashboard' %}" class="sub-item">Members Dashboard</a>  
+            </div> 
+
+            generic-getProductList
+          </div>
+        </div>            
+            
+              
       {% endif%}  
 
       <div class="item ">

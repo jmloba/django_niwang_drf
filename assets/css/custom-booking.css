@@ -1,0 +1,60 @@
+
+
+#reservation-sec .card{
+
+  background-color: rgb(206, 184,   227);
+  margin-bottom: 10px;
+  z-index: 0;
+  position : relative;
+}
+#room-list .heading{
+  align-items: center;
+  color : var( --color-fb-blue);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+#room-list .home .heading {
+  text-align: center;
+}
+/* home icon */
+.failed-booking-details{
+  background-color: rgb(185, 156, 156);
+  display:flex;
+  flex-direction: column;
+
+  justify-content: center;
+  text-align: center;
+}
+#room-list .row{
+  display:flex;
+  justify-content: center;
+  text-align: center;
+
+}
+#room-list .card img{
+  padding:2em 2em;
+
+}
+
+#room-list .card{
+
+  width: 15em;
+  margin : 10px 10px;
+  justify-content: space-evenly;
+
+  border-color: var(--colorgold1);
+  border-style: solid;
+  border-width: 2px;  
+  border-radius: 10px;;
+}
+#room-list .card-body{
+  background-color: var( --colorgold4);
+
+}
+
+#booking-form{
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+}

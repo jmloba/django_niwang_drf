@@ -83,6 +83,9 @@ img{
   outline: 0px !important;
 }
 
+section .main-container{
+  background-color: #13b990;
+}
 
 .btn-mybtn {
   background-color:var(--color-fb-blue );
@@ -230,8 +233,11 @@ margin :1% 10%;
   font-size: 12px;
 }
 .section-container{
-  background-color: red;
+  
+  width:80%;
   display: flex;
+  margin: auto;
+  margin-top :3rem;
 }
 
 @media (max-width:700px){

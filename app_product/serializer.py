@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from app_product.models import Product
+from app_product.models import Product, ProductCategory
 
 # data model serializer
+
+
 class  ProductSerializer( serializers.ModelSerializer):
   class Meta:
     model = Product
@@ -14,6 +16,12 @@ class  ProductSerializer( serializers.ModelSerializer):
 
     fields=('__all__')
     # fields=('product_id','name','cost', )
+
+class  ProductCategorySerializer( serializers.ModelSerializer):
+  class Meta:
+    model = ProductCategory
+    fields=('__all__')
+
 
 class UserSerializer(serializers.ModelSerializer):
   class Meta:

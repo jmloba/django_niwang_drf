@@ -1,0 +1,92 @@
+{% extends 'main/base.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+{%include 'include/user-info.html'%}
+
+<section id="dashboard-post">
+  
+  <div class="body-area">
+    <h1>Post Dashboard</h1>
+    <div class="add-button">
+      {% if perms.app_blog.add_post  %}
+      <button class="btn btn-mybtn" data-bs-toggle="modal" data-bs-target="#add-post-form">new post</button>   
+      {% endif %}
+       
+    </div>
+    <main class="table">
+      <section class="table__header"> </section>
+      <section class="table__body"> 
+        <table >
+          <caption> 
+            Task
+          </caption>
+          <thead>
+            <tr>
+              <th>Author</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th colspan="1">Actions</th>
+            </tr>
+          </thead>
+          <tbody  id="tbody" 
+          class="table-body">
+          {% for item in data %}
+            
+            <tr id="task-id-{{item.id}}">
+              <td data-cell="Author">{{item.author}}</td>
+              <td data-cell="Title">{{item.title}}</td>
+              <td data-cell="date">{{item.updated_at}}</td>
+              <td >
+
+              {% if user == item.author or perms.app_blog.delete_post  %}
+                <form action="{% url 'app_blog:postDashboard' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger"  name="post-id" value="{{item.id}}">Delete</button>
+                </form>
+              {%endif%}
+
+              {% if user.is_staff %}
+                <form action="{% url 'app_blog:postDashboard' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-warning" name="user-id" value="{{item.author.id}}">Ban</button>
+                </form>
+              {% endif %}
+
+              </td>
+            </tr>   
+  
+          {% endfor %}              
+          </tbody>
+
+        </table>
+      </section>
+      {% include 'include/error-messeges.html'%}
+    </main>
+  </div> 
+</section>
+<!-- modal form  1 -->
+<div class="modal fade" id="add-post-form">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create New MFO</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form id="post-form" method="POST"   action="{% url 'app_blog:postCreateRecord' %}" 
+         >
+          {% csrf_token %}
+          {% include 'app_blog/form-fields-post.html' %}
+          <button type="submit" class="btn btn-primary" ><i class="fa-solid fa-floppy-disk"></i>Submit modal</button>
+        </form>      
+        {% include 'include/error-messeges.html'%}   
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+{% endblock %}

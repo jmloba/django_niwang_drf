@@ -32,11 +32,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    # apps
     'accounts',
     'app_booking',
     'app_product',
     'app_articles',
+    'app_blog',
+    'app_auth',
+    'app_members',
+    'app_mail',
+
+    'debug_toolbar',
+    # pip install djangorestframework-xml
+    
+    
+    # built in apps for DRF
+    'rest_framework',
+    'rest_framework.authtoken',
 
     # pip install pillow
     #pip install crispy-bootstrap5
@@ -44,6 +56,8 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     #pip install django-formtools
     "formtools",    
+    # pip install django-widget-tweaks
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +68,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'niwang.urls'
@@ -143,6 +159,12 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR,'assets'),
 )
 
+INTERNAL_IPS = [
+   
+    "127.0.0.1",
+    # ...
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -164,3 +186,46 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL=config('DEFAULT_FROM_EMAIL')
 EMAIL_BACKEND =config('EMAIL_BACKEND') 
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE':50,
+
+    # authentication
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',        
+
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',        
+    ],
+
+    'DEFAULT_PERMISSION_CLASSES':[
+      'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework_xml.renderers.XMLRenderer',
+    ] ,
+   'DEFAULT_PARSER_CLASSES': [
+        'rest_framework_xml.parsers.XMLParser',
+    ],
+ 
+} 
+
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.history.HistoryPanel',
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.alerts.AlertsPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+    'debug_toolbar.panels.profiling.ProfilingPanel',
+]

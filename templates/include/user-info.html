@@ -1,7 +1,14 @@
 <div class ="user-info">
   <div class="user-info-details">
-    <p>User : <span>{{request.user}}</span></p>
-  </div>
+      <a href="{% url 'accounts:logout-view' %}">
+        <button type="submit" class="btn btn-primary" > <i class="fas fa-info-circle"></i>Logout <span>{{request.user}}</span></button>
+      
+      </a>
+    
+  
+
+  </div> 
+
 
 
 </div>

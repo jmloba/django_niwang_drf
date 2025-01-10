@@ -26,7 +26,13 @@ class UserAccess(models.Model):
   supervisor = models.BooleanField(default=False)
   post_task = models.BooleanField(default=False)
   Programmers = models.BooleanField(default=False)  
-
+  article_create = models.BooleanField(default=False)
+  article_delete = models.BooleanField(default=False)
+  programmer_access=models.BooleanField(default=False)
+  admin_only=models.BooleanField(default=False)
+  todo_access_all = models.BooleanField(default=False)
+  todo_rights = models.BooleanField(default=False)
+  send_email_trigger  = models.BooleanField(default=False)
   # location=models.CharField(max_length=30, null=True, blank=True)
 
   # age = models.IntegerField(default=0)

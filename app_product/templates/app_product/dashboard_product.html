@@ -5,7 +5,7 @@
 {% block content %}
 
 <section id="dashboard-product">
-  {%include 'include/user-info.html'%}
+
   <div class="body-area">
     <h1>Product Dashboard</h1>
     <div class="add-button">
@@ -45,13 +45,13 @@
               <td data-cell="View">
 
                 <button class="btn btn-info btn-sm">
-                  <a href="{% url 'app_product:apiclass-ProductDetailView' item.id%}">
+                  <a href="{% url 'app_product:apiclassProductDetailView' item.id %}">
                     <i class="bi bi-eye"></i>
                   </a>
                   </button>
                   &nbsp;&nbsp;
                   <button class="btn btn-info btn-sm">
-                    <a href="{% url 'app_product:apiclass-ProductUpdateView' item.id%}">
+                    <a href="{% url 'app_product:apiclass-ProductUpdateView' item.id %}">
                       <i class="bi bi-pencil"></i>
                     </a>
                     </button>        
@@ -97,7 +97,5 @@
   </div>  
 </div>
 
-
-<link rel="stylesheet" href="{% static 'css/app-task-dashboard.css' %}">
 
 {% endblock %}

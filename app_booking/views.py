@@ -12,6 +12,9 @@ from django.urls import reverse, reverse_lazy
 from django.urls import reverse
 
 from app_booking.models import Room, Booking
+
+from django.contrib.auth.decorators import login_required
+
 # from app_booking 
 
 def get_room_cat_url_list():
@@ -28,7 +31,12 @@ def get_room_cat_url_list():
     room_url = reverse('app_booking:room-detail-view', kwargs={'category': category,})
     room_cat_url_list.append((room_category, room_url))
   return  room_cat_url_list 
+
+
+
+@login_required(login_url='accounts:login-view')
 def RoomListView(request):
+
   room_category_url_list = get_room_cat_url_list()
   context = { 'room_list':room_category_url_list} 
   return render(request,'app_booking/room_list.html', context)
