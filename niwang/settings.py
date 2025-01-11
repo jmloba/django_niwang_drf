@@ -152,6 +152,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+LOGIN_URL = '/accounts/login-view/'
 
 STATIC_URL = '/assets/'
 STATIC_ROOT = BASE_DIR/'static'
@@ -204,12 +205,12 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-        'rest_framework_xml.renderers.XMLRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
+        # 'rest_framework_xml.renderers.XMLRenderer',
     ] ,
-   'DEFAULT_PARSER_CLASSES': [
-        'rest_framework_xml.parsers.XMLParser',
-    ],
+#    'DEFAULT_PARSER_CLASSES': [
+#         'rest_framework_xml.parsers.XMLParser',
+#     ],
  
 } 
 

@@ -7,7 +7,7 @@ class UserProfile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   bio = models.TextField(max_length=2000,blank=True)
 
-  avatar = models.ImageField(default='image-default/default-image.png', upload_to='user-profile/')
+  avatar = models.ImageField(default='image-default/no-image.png', upload_to='user-profile/')
 
   cover_photo = models.ImageField(default='image-default/default-image.png', upload_to='cover-photo/')
   

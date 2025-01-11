@@ -4,14 +4,23 @@ from django.shortcuts import render
 from app_mail.models import EmailDB, EmailANS
 from app_articles.models import  User
 from accounts.models import UserAccess
-from .forms import Email_Answer, CreateEmailForm, ResponseEmail
+from app_mail.forms import Email_Answer, CreateEmailForm, ResponseEmail
 from . utils import send_email,send_response_email
 from django.shortcuts import get_object_or_404, render, redirect
 from datetime import datetime
 from accounts.utils import is_ajax
 from app_mail.forms import Email_Answer
+from django.contrib.auth.decorators import login_required, permission_required
 
-# Create your views here.
+from app_product.models import Product
+from app_product.mydecorator import custom_permission_required
+
+
+
+
+#-=------- testsample
+
+@login_required(login_url='accounts:login-view')
 def email_me(request):
   user = UserAccess.objects.get(user=request.user)
   if request.method=='POST':
@@ -37,6 +46,11 @@ def email_me(request):
   context={'form':form,}
   return render(request,'app_mail/email_me.html', context )  
 
+
+
+# @permission_required("app_mail.delete_emaildb",login_url='home', raise_exception=False)
+@custom_permission_required("app_mail.delete_emaildb")
+@login_required(login_url='accounts:login-view')
 def email_list(request):
   emails= EmailDB.objects.all() 
   if request.method=='POST':
@@ -59,6 +73,8 @@ def email_list(request):
   context={'form':form,'emails':emails}
   return render(request,'app_mail/email_list.html', context )  
 
+@custom_permission_required("app_mail.delete_emaildb")
+@login_required(login_url='accounts:login-view')
 def email_list_view(request):
   emails=EmailDB.objects.filter(replied=False)
   form = Email_Answer()
@@ -106,6 +122,7 @@ def email_list_view(request):
   context = {'emails':emails, 'form':form}
   return render(request,'app_mail/email_list_view.html', context )
 
+@login_required(login_url='accounts:login-view')
 def send_email_to_queries (request,email_from,email_to,email_body,package_amount)   :
       response_to = email_to
       mail_subject= 'Response from Inquiry' 
@@ -115,6 +132,7 @@ def send_email_to_queries (request,email_from,email_to,email_body,package_amount
 
       send_response_email(request,mail_subject,email_template, email_body,response_to,package_amount)
 
+@login_required(login_url='accounts:login-view')
 def reply_email(request):
   print('pass  reply_email')
   pass
@@ -127,7 +145,7 @@ def reply_email(request):
   else:
     return JsonResponse({"status": 0})
 
-
+@login_required(login_url='accounts:login-view')
 def emailin_delete(request):
   if request.method == "POST":  
     id = request.POST.get("sid")
@@ -138,7 +156,7 @@ def emailin_delete(request):
   else:
     return JsonResponse({"status": 0})  
 
-
+@login_required(login_url='accounts:login-view')
 def answered_email_toggle (request) :
   print(f'views answered email toggle')
   if request.method == "POST":  
@@ -159,6 +177,7 @@ def answered_email_toggle (request) :
 def email_reply(request)  :
   pass
 
+@login_required(login_url='accounts:login-view')
 def answered_email(request):
   email_ans = EmailANS.objects.all().order_by('-created_date')
   

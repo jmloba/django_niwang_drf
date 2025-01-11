@@ -37,7 +37,9 @@ urlpatterns = [
 
     
     path('apiclass-ProductUpdateView/<int:pk>',apiclass_ProductUpdateView.as_view(), name='apiclass-ProductUpdateView'),
+
     path('apiclass-ProductDeleteView/<int:pk>',apiclass_ProductDeleteView.as_view(), name='apiclass-ProductDeleteView'),
+    
 
     # generic view
     path('generic-UserList/',generic_UserList.as_view(), name='generic-UserList'),
@@ -45,8 +47,7 @@ urlpatterns = [
 
     path('generic-ProductList/',generic_ProductList.as_view(), name='generic-ProductList'),
     
-    #  call requests to get from api (function view)
-    path('listproducts2/',views.listproducts2, name='listproducts2'),
+  
 
     ## using mixins
     path('mixins-path/',ListProductsMixins.as_view(), name='mixins-listproducts'),
@@ -66,6 +67,11 @@ urlpatterns = [
 
 
     
-#---------- viewsets -----------------
+#---------- sample -----------------
+  path('premiumProducts/',views.PremiumProducts.as_view(), name='premiumProducts'),  
+  
+  # path('premiumProducts/',views.premiumProducts, name='premiumProducts'),  
+#---------- sample -----------------
+
 
   ]+router.urls

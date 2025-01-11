@@ -2,11 +2,62 @@
 #home .sidebar-area{
   background-color: rgb(230, 190, 190);
 }
+#home .dashboard-user .card{
+  background-color: rgb(235, 183, 161);
+  border-radius: 10px;
+  width :35% !important;
+}
+
 #home  .dashboard-user {
   justify-content: space-evenly;
   margin :10px 10px;
-
 } 
+
+#home .gen-info .card{
+  background-color: beige;
+  margin-bottom : 5px;
+  
+}
+#home .gen-details .card{
+  margin-bottom : 1em;
+  background-color: rgb(160, 160, 114);
+}
+.user-profile{
+  background-color: rgb(212, 212, 177);
+  margin-top :1rem;
+}  
+.user-profile h4{
+  display : flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-photo{
+  display:flex;
+  justify-content: center;
+  margin-top :1rem;
+  
+}
+.card-body-username{
+  color : rgb(78, 53, 10);
+  display:flex;
+  justify-content: center;
+
+}
+
+.profile-photo img{
+  width: var(  --home_image_size );
+  height: var(  --home_image_size );
+  -webkit-border-radius: var(  --home_image_size );
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: var(  --home_image_size );
+  -moz-background-clip: padding;
+  border-radius: var(  --home_image_size );
+  background-clip: padding-box;
+  margin: 7px 0 0 5px;
+  float: left;
+}
+
+
 #home .detail-area{
  
   display : block;
@@ -24,24 +75,10 @@
   justify-content: space-around;
   
 }
-.card {
-  margin : 1em 1em;
-
-}
-
-#home .gen-info .card{
-  background-color: beige;
-  margin-bottom : 5px;
-  
-}
 
 #home .gen-details{
   background-color: rgba(125, 182, 172, 0.478);
   display : flex;
   flex-wrap: wrap;
-}
-#home .gen-details .card{
-  margin-bottom : 1em;
-  background-color: rgb(160, 160, 114);
 }
 

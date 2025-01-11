@@ -27,6 +27,37 @@
 
 }
 
+.message-container{
+  
+  margin-top :7rem;
+  width : 40%;
+  display : flex;
+  justify-content: center; 
+  align-items: center;
+  margin :7em auto;
+
+  
+}
+.message-container .card{
+  background-color: rgb(220, 60, 60);
+  width : 90%;
+  display : flex;
+  justify-content: center; 
+  align-items: center;
+  margin : auto;
+  padding: 3em 3em;
+}
+.message-container .card h2{
+  color : yellow;
+}
+.message-container .card p {
+  color : White;
+  font-size: 18px;
+  font-weight: 400;
+
+}
+
+
 
 
 @media (max-width:700px){

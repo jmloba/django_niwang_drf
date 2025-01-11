@@ -51,14 +51,13 @@
                 <a href="{% url 'app_product:apiclass-ProductView' %}" class="sub-item">product Dashboard- classbased</a>  
 
               </div> 
-            
+
+              {% if perms.app_product.view_product  %} 
               <div class="item ">
-                <a href="{% url 'app_product:listproducts2' %}" class="sub-item">(generic) product list 2 dashboard</a>  
-
+                <a href="{% url 'app_product:premiumProducts' %}" class="sub-item">test api</a>  
               </div> 
+              {% endif %}
               
-
-              generic-getProductList
             </div>
           </div>  
           
@@ -82,7 +81,8 @@
           </div>            
           {%endif %}
 
-          <!-- joven *** permission : {{perms.user}}             -->
+          joven *** permission : {{perms.user}}            
+          
 
           {% if perms.app_mail.view_emaildb %} 
           <div class="item ">
@@ -100,10 +100,11 @@
                 <a href="{% url 'app_mail:email_me' %}" class="sub-item">Create Email</a>  
               </div> 
               {%endif %}
-
+              {% if perms.app_mail.delete_emaildb %}  
               <div class="item ">
                 <a href="{% url 'app_mail:email-list-view' %}" class="sub-item">View  Email Dashboard</a>  
               </div> 
+              {%endif %}
               
             </div>
           </div>            
@@ -144,7 +145,12 @@
         <a href="{% url 'accounts:login-view' %}"><i class="fa-solid fa-door-open"></i>Login</a>
       </div>      
     {% endif %}  
-    <div class="item "><a href="#"><i class="fas fa-info-circle"></i>About</a>
+
+    <div class="item ">
+      <a href="{% url 'accounts:about' %}">
+        <i class="fas fa-info-circle">
+          
+        </i>About</a>
     </div>          
 
   </div>

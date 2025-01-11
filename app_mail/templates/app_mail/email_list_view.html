@@ -7,8 +7,7 @@
   <div class="my-container my-container-para my-container-bg d-block"
   style="--margin-top:2em; --margin-left: 5em; --margin-right: 5em;"
   >
-  
-  <hr>
+
     <div class="main-div">
       <div class="table-outer-wrapper">
         <section class="table__header" >Incoming Email List
@@ -20,7 +19,7 @@
               <table class="table product-table content-table table-striped">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">From</th>
+                    <th >From</th>
                     <th scope="col">Message</th>
                     <th scope="col">Date</th>
                     {% if user.user.programmer_access %}
@@ -33,26 +32,24 @@
                 <tbody id="tbody" >
                   {% for email in emails %}
                   <tr id="tr-rec-{{email.id}}" class="table-record">
-                    <td id="tr-email-from-{{email.id}}">{{email.email_from}}</td>
-                    <td>{{email.email_body}}</td>
-                    <td>{{email.created_date}}</td>
+                    <td data-cell="From">{{email.email_from}}</td>
+                    <td data-cell="Email Content">{{email.email_body}}</td>
+                    <td data-cell="DateCreated">{{email.created_date}}</td>
                     {% if user.user.programmer_access %}
                     <td>{{email.id}}</td>
                     {% endif %}
 
 
-                    <td  class="td-action1">
+                    <td data-cell="Reply" class="td-action1">
                       <button type="button"  id='btn-email-reply' class="reply-btn btn btn-primary btn-sm"  
                       data-email="{{email.email_from}}" 
                       data-sid="{{email.id}}" 
                       data-url="{% url 'app_mail:email-reply' %}" >
-                        <span class="btn-reply-icon">
-                          <img src="{% static 'icon_svg/reply-icon.svg'%}" alt="">
-                        </span>
+                      <i class="bi bi-reply"></i>
                       </button>
                     </td>
 
-                    <td class="td-action2">
+                    <td data-cell="Delete" class="td-action2">
                         <button class="btn btn-danger btn-sm" 
                         data-sid="{{email.id}}" id="btn-emailin-delete"
                         data-url="{% url 'app_mail:emailin-delete' %}"

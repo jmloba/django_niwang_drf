@@ -71,12 +71,12 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Create New MFO</h4>
+        <h4 class="modal-title">Create New Product</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
-        <form id="post-form" method="POST"   action="{% url 'app_blog:postCreateRecord' %}" 
+        <form id="post-form" method="POST"   action="{% url 'app_product:product-addrecord' %}" 
          >
           {% csrf_token %}
           {% include 'app_blog/form-fields-post.html' %}

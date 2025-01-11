@@ -1,0 +1,41 @@
+{% extends 'main/base.html'%}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<section id="dashboard-product">
+
+  <div class="body-area">
+    <h1>User Permissions</h1>
+    <main class="table">
+      <section class="table__header"> </section>
+      <section class="table__body"> 
+        <table >
+          <caption> 
+            permission Table
+          </caption>
+          <thead>
+            <tr>
+              <th>permission</th>
+            </tr>
+          </thead>
+          <tbody  id="tbody" 
+          class="table-body">
+          {% for item in data %}
+            <tr id="task-id-{{item.id}}">
+              <td data-cell="product id">{{item.perms.user.permission}}</td>
+            </tr>   
+  
+          {% endfor %}              
+          </tbody>
+
+        </table>
+      </section>
+      {% include 'include/error-messeges.html'%}
+    </main>
+  </div> 
+</section>
+
+
+{% endblock %}

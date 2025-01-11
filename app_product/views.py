@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.models import User
 
 from app_product.models import Product, ProductCategory
@@ -19,33 +19,60 @@ from rest_framework import routers
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from django.contrib.auth.decorators import login_required
-
-
-
+from app_product.mydecorator import custom_permission_required
+from rest_framework import permissions
 import requests
+from app_product.mydecorator import custom_permission_required, group_required
+from django.views.generic.list import ListView
+from .mixins import CheckPremiumGroupMixin
+
+#----------
+# checking permission for function  based views
+#----------
+
+@custom_permission_required('app_product.view_product')
+# @custom_permission_required('app_product.add_product')
+def premiumProducts(request):
+  print ('test default')
+  # ct = ContentType.objects.get_for_model(Product)
+  # if request.user.groups.filter(name='default').exists():
+  # if request.user.permission.filter(codename='view_product', contenttype=ct).exists():
+
+  data = Product.objects.all()
+  product=ProductSerializer(data, many=True)
+  print (f'premium product test {product.data} ')
+  context={'product':product.data,}
+  return render(request, 'app_product/listpremiumProducts.html', context)
+  # else:
+  #   return HttpResponse('no permission found in user')
+  
+#----------
+# checking permission for class based views
+#----------
+from django.contrib.auth.mixins import PermissionRequiredMixin
+# class PremiumProducts(CheckPremiumGroupMixin, ListView):
+class PremiumProducts(PermissionRequiredMixin, ListView):  
+  template_name ="app_product/listpremiumProducts.html"
+  model = Product
+  context_object_name='product'
+  # note  if using PermissionRequireMixin
+  permission_required='app_product.view_product'
+  paginate_by =2
 
 
-
-# function view
-
-@authentication_classes([BasicAuthentication, SessionAuthentication, TokenAuthentication])
-@permission_classes([IsAuthenticated])
 @login_required(login_url='accounts:login-view')
 @api_view(['GET',])
 def listproducts(request):
   query = Product.objects.all()
   serializer_class = ProductSerializer(query, many=True)
-  
-
   form = ProductForm()
-  print(f'serialized product: {serializer_class.data}')
-
+  # print(f'serialized product: {serializer_class.data}')
   context = {"data":serializer_class.data, 'form': form}
   template = 'app_product/dashboard_product.html'
   # return Response(serializer_class.data)
   return render(request,template,context)
 
-
+@custom_permission_required('app_product.add_product')
 @api_view(['POST',])
 def product_addrecord(request):
   if request.method =='POST':
@@ -118,8 +145,13 @@ class apiclass_ProductDetailView(APIView):
     context = {"data":serializer_class.data, 'form': form}
     # return Response (serializer_class.data)    
     return render(request,template,context)
-  
+
+
+
 class apiclass_ProductUpdateView(APIView):
+  authentication_classes=[SessionAuthentication, BasicAuthentication ]
+  
+
   def get(self,request,pk=None):
     data = Product.objects.get(pk=pk)
     form = ProductForm(instance=data)
@@ -128,7 +160,9 @@ class apiclass_ProductUpdateView(APIView):
     template ='app_product/product-update.html'
     context = {"data":serializer_class.data, 'form': form}
     return render(request,template,context)
-  def put(self,request,pk=None):
+  
+  
+  def post(self,request,pk=None):
     print(f' method is put  pk is :{pk}')
     data= request.data
     data_obj = Product.objects.get(pk=pk)
@@ -138,16 +172,19 @@ class apiclass_ProductUpdateView(APIView):
       print(f' serializer is valid ')      
       product_saved= serializer_obj.save()
       response= {"success": "product : '{}' created successfully ".format(product_saved.name)}
-      return Response(response)
-      # return redirect('app_product:apiclass-ProductView', )
-  
+      # return Response(response)
+      return redirect('app_product:apiclass-ProductView', )
+
+
+
+
 class apiclass_ProductDeleteView(APIView):
   def get(self,request,pk=None):
     print(f' method delete pk: :{pk}')
     data = Product.objects.get(pk=pk).delete()
 
-    return Response( status=status.HTTP_200_OK)
-    # return redirect('app_product:apiclass-ProductView', )
+    # return Response( status=status.HTTP_200_OK)
+    return redirect('app_product:apiclass-ProductView', )
   
 
 #---------- generic view  -------------------
@@ -222,34 +259,7 @@ class DetailCreateProductGenerics(generics.CreateAPIView):
 class generic_ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    
-
-@api_view(['GET'])
-def listproducts2(request):
-  print(f'request : {request}')
-
-  # # ###========
-  # print(f'calling request')
-  # # # after installing "requests"
-  # print(f"\n calling-->> requests.get('http://127.0.0.1:8000/app_product/generic-ProductList/') ")
-
-
-  # response = requests.get('http://127.0.0.1:8000/app_product/generic-ProductList/')
-
-  # #  # transfor the response to json objects
-  # data = response.json()
-  # # print(f'\n\n ***** data  after getting response: {data}\n')
-  # ###========
-  data='test'
-  return Response(data)
   
-  # form = ProductForm()
-  # context = {"data":response, 'form': form}
-  # template = 'app_product/dashboard_product.html'
-  # return render(request,template,context)
-  
-
-
 #---------- viewsets -----------------
 # modelviewset has all the operation
 # class ProductViewSet(viewsets.ModelViewSet):

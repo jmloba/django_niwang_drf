@@ -14,6 +14,17 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
+
+
+def about_permission(request):
+  
+  data=''
+  context={'data': data}
+  return render(request,'accounts/show-permission.html', context)
+
+
+
+#--------
 @unauthenticated_user
 def login_view(request):
   if request.method=='POST':
