@@ -1,14 +1,9 @@
 section{
   /* background-color: rgb(226, 208, 208); */
   height :90vh;
-  margin : 3rem 5rem;
+  margin : 2rem 2rem;
   overflow :hidden;
 }
-main.table{
-  /* background-color: rgba(127, 255, 212, 0.423) !important; */
-  height :80vh;
-}
-
 .card-image{
   height :8rem;
   width : 8rem;
@@ -30,41 +25,52 @@ main.table{
 }
 
 .table__body .card .card-body{
-  background-color: rgb(210, 191, 191);
+  /* background-color: rgb(210, 191, 191); */
   border-radius: 5px;
 
 }
 
 
-#article_deail-view .body-area{
-  display : block;
-  padding : 1rem 1rem;
-  justify-content: center;
-}
+
 
 #article_deail-view .detail-body{
+  
   color : black;
-  display : flex;
+
   
 }
 .detail-body-item{
+  color : var(  --body-text-color );
   margin :1rem 1rem;
+  font-size : 18px;
+  font-weight: 500;
 }
+.detail-body-item.detail-body-image img{
+  width : 18rem;
+}
+.detail-body-item,
+.detail-body-item.detail-body-image,
+.detail-title{
+  display : flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-title-color{
+  color : var(  --body-title-color );
+  font-size: 25px;
+  font-weight: 600;
+  
+}
+
+
 #article_list main .table__header{
-  /* background-color: aquamarine; */
+  background-color:var(  --body-area-article );
   display : block;
   margin : 0;
   height : 10vh;
 }
 
 @media (max-width:700px) {
-  section {
-    margin :0;
-    margin-top :2rem;
-  }
-  #article_deail-view .body-area{
-    margin:auto;
-  }
   
   #article_deail-view .detail-body{
   

@@ -44,16 +44,7 @@ img{
   /* max-width : 100%; */
   height : auto;
 }
-.main-section {
-  background-color : var(--main-section );
-  margin-top:2em;
-}
-.body-area{
-  
-  background-color: var(--table-body-area) !important;
-  margin :0 1em;
-  padding : 1em 1em;
-}
+
 
 #error-messages,
 #login-messages{
@@ -83,9 +74,7 @@ img{
   outline: 0px !important;
 }
 
-section .main-container{
-  background-color: #13b990;
-}
+
 
 .btn-mybtn {
   background-color:var(--color-fb-blue );
@@ -216,11 +205,6 @@ form label {
   color : red;
 }
 
-
-
-
-
-
 /* for messages */
 #message-section .alert{
 margin :1% 10%;
@@ -232,20 +216,31 @@ margin :1% 10%;
   color :var( --color-fb-blue     );
   font-size: 12px;
 }
-.section-container{
+
+
+.body-area{
   
-  width:80%;
-  display: flex;
-  margin: auto;
-  margin-top :3rem;
+  margin :0 1em;
+  padding : 1em 1em;
+  height : 100%;
+  
+
 }
+main.table{
+  background-color: aliceblue;
+  height : 100%;
+
+}
+
+
 
 @media (max-width:700px){
 
   .body-area {
-    background-color: var(--table-body-area);
+    
     margin: 0; 
     padding :0;
+    height: 98%;
   }
 
 

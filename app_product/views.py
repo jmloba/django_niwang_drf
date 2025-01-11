@@ -47,7 +47,7 @@ def premiumProducts(request):
   #   return HttpResponse('no permission found in user')
   
 #----------
-# checking permission for class based views
+# checking permission for class based view_room
 #----------
 from django.contrib.auth.mixins import PermissionRequiredMixin
 # class PremiumProducts(CheckPremiumGroupMixin, ListView):
@@ -219,7 +219,11 @@ class ListProductsMixins(mixins.ListModelMixin, generics.GenericAPIView):
     return self.list(request, *args,**kwargs)
 
    
-class DetailProductMixins(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.CreateModelMixin,mixins.DestroyModelMixin, generics.GenericAPIView):
+class DetailProductMixins(mixins.RetrieveModelMixin, 
+                          mixins.UpdateModelMixin,
+                          mixins.CreateModelMixin,
+                          mixins.DestroyModelMixin, 
+                          generics.GenericAPIView):
 
   queryset = Product.objects.all()
   serializer_class = ProductSerializer

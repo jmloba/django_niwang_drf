@@ -29,13 +29,13 @@
 
                 {% if perms.app_articles.view_article %}  
                 <div class="view-article-btn">
-                  <a class='btn btn-mybtn'  href="{% url 'app_articles:articleDetailView' item.id %}" >View Article xxx</a> 
+                  <a class='btn btn-mybtn'  href="#" >View Article xxx</a> 
                 </div>
                 {% endif %}
 
                 {% if perms.app_articles.delete_article %}  
                 <div class="view-article-btn">
-                  <a class='btn btn-mybtn'  href="{% url 'app_articles:article_delete' item.id %}" >Delete</a> 
+                  <a class='btn btn-mybtn'  href="#" >Delete</a> 
                 </div>
                 {% endif %}
       

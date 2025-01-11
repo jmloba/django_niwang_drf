@@ -7,7 +7,12 @@
   --main-section : #ebefa912;
 
   --home_image_size :10rem;
-  
+
+  --body-title:blue;
+
+  --body-area-article :  #8e5f22ea;
+  --body-text-color : rgb(187, 180, 171);
+  --body-title-color : rgb(204, 221, 20);
 
   --main-table:rgba(81, 135, 158, 0.238);
   --table:rgba(182, 24, 24, 0.854);

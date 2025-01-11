@@ -1,0 +1,52 @@
+
+
+{% extends  'main/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<section id="create-article">
+  <div class="my-container my-container-para  d-block"
+  style="--margin-top:3em; --margin-left: 6em; --margin-right: 6em; " 
+
+  >
+
+    <div class="article-title">
+      <h3 class="text-center article-title">New Article</h3>     
+    </div>
+
+    <div class="form-wrapper">
+      <div class="article-form">
+
+        <form action="{% url 'app_articles:article_create' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- {{form.as_p}} -->
+          <label for="form-data-title">Title</label>
+          {% render_field form.title placeholder="title" class+="form-control " id="form-data-title" %}
+        
+          <label for="form-data-body">Body</label>
+          {% render_field form.body placeholder="body" class+="form-control " id="form-data-body" %}
+  
+          <label for="form-data-photo">Photo</label>
+          {% render_field form.thumb placeholder="hoto" class+="form-control " id="form-data-photo" %}
+  
+  
+          <br>
+            <button class='btn btn-mybtn'  type="submit">Save Article</button>	
+  
+        </form>
+  
+      </div>
+    </div>
+
+
+  
+  
+
+  </div>
+</section>
+
+<link rel="stylesheet" href="{% static 'css/custom-articles.css' %}">
+
+{% endblock %}

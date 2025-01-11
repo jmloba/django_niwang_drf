@@ -47,15 +47,11 @@ urlpatterns = [
     path('test_token/', views.test_token , name='test_token'),       
     path('loginview/', UserLoginView.as_view() , name='loginview'),       
 
-    
-
-
-
 ]
 
 
 if settings.DEBUG:
-    urlpatterns+=  debug_toolbar_urls()
+    # urlpatterns+=  debug_toolbar_urls()
     urlpatterns+= staticfiles_urlpatterns()
     urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

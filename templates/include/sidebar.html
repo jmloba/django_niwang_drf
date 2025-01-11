@@ -14,6 +14,7 @@
 
     {% if user.is_authenticated %}
       {% if not user.user.new_user %}
+        {% if perms.app_booking.view_room %}  
         <!-- document entries -->
         <div class="item ">
           <a class="sub-btn">
@@ -27,13 +28,27 @@
             <div class="item ">
               <a href="{% url 'app_booking:RoomList'%}" class="sub-item">Room List</a>  
             </div> 
-          
+            {% if perms.app_articles.view_article %}  
+              {% if perms.app_articles.add_article %}  
+
+              <div class="item ">
+                <a href="{% url 'app_articles:article_create'%}" class="sub-item">Create Article</a>  
+              </div>    
+              {% endif%}
+
+              
             <div class="item ">
               <a href="{% url 'app_articles:dashboard_articles'%}" class="sub-item">Articles</a>  
-            </div>           
+            </div>                
+
+            <div class="item ">
+              <a href="{% url 'app_articles:articleListMixin' %}" class="sub-item">Articles using mixins</a>  
+            </div>                
+            {% endif %}       
           </div>
 
         </div>  
+        {% endif %}
         {% if user.user.Programmers %}
           <div class="item ">
             <a class="sub-btn">

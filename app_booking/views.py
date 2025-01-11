@@ -42,7 +42,10 @@ def RoomListView(request):
   return render(request,'app_booking/room_list.html', context)
 
 
+
+
 class RoomDetailView(View) : 
+  permission_required='app_booking.view_room'
   '''
   Room detail view  is a generic view based
   '''
