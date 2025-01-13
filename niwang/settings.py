@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     "formtools",    
     # pip install django-widget-tweaks
     'widget_tweaks',
+    # pip install django-heroku
+
 ]
 
 MIDDLEWARE = [
@@ -231,3 +233,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.redirects.RedirectsPanel',
     'debug_toolbar.panels.profiling.ProfilingPanel',
 ]
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
