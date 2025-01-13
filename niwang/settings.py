@@ -20,8 +20,8 @@ SECRET_KEY =  config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS =config("ALLOWED_HOSTS").split(",")
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'app_auth',
     'app_members',
     'app_mail',
+    'api',
 
     'debug_toolbar',
     # pip install djangorestframework-xml

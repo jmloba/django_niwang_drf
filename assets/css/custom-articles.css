@@ -1,0 +1,151 @@
+#article_list  .my-container .article-items{
+  display : inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-items :end;
+  gap : 1em;
+}
+
+#article_list .card{
+  /* background-color:var(--border-gold); */
+  width : 20em;
+  height : 20 em;
+
+  border-color: var(--colorgold1);
+  border-style: solid;
+  border-width: 2px;  
+}
+#article_list .card .card-img-top{
+  width : 10em;
+  margin: auto auto;
+  padding : 1em 1em;
+
+  
+}
+#article_list .card-body{
+  background-color: var(--colorgold4) ;
+  
+  padding : 10px;
+  margin : 1px 1px;
+  
+  border-bottom-left-radius:5px ;
+  border-bottom-right-radius:5px ;
+}
+#article_list .card-text{
+  font-size: 12px;
+
+}
+#article_list  .card-title{
+  color : var(--color-article-title);
+  text-align: center;
+  font-weight: 600;
+}
+
+
+
+#article_list  .my-container{
+  display : block;
+  margin-top : 5em;
+}
+
+
+#article_list .sec-title{
+  display : block;
+  
+}
+#article-detail-2 .content-item{
+  display : flex;
+  flex-direction: column;
+}
+#article-detail-2 .article-pix{
+  width: 15em;;
+  border-radius: 10px;
+
+}
+#article-detail-2 .content-item-title,
+#article_list .sec-title h4{
+  color: var( --color-fb-blue);
+  font-size : 18px;
+  text-align: center;
+  font-weight : 600;
+  align-items: center;
+  justify-content: center;
+  
+}
+.article-form{
+  overflow: scroll;
+}
+
+
+
+
+#article_list .text-end i{
+  color : var(--color-bloody-red);
+  font-size : 18px;
+}
+
+#article_list .article-footer{
+  display: flex;
+  justify-content: space-between;
+}
+
+#create-article .article-form{
+  /* background-color: var( --border-gold); */
+  background-color: rgb(198, 183, 183);
+  padding : 10px 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  
+
+}
+
+
+#create-article  form{
+  /* background-color: brown; */
+  min-width : 18em;
+  width :30em;
+  
+}
+
+#create-article  form label{
+  color : blue !important;
+}
+
+
+#create-article .article-form #form-data-body{
+height : 5em;
+max-height: 20em;
+max-width: 35em;;
+
+}
+
+
+
+
+
+#create-article .article-form
+{
+  border-color: var(--colorgold1);
+  border-style: solid;
+  border-width: 2px;  
+  border-radius: 10px;;
+
+}
+#create-article .article-form{
+  background-color: var(   --colorgold4 );
+}
+
+#article-detail-2 .content-item-details{
+
+  margin : auto auto;
+  padding : 2em 2em;
+}
+#article-detail-2 .content-desc{
+  color : var(--colorgold1);
+  background-color: var( --colorgold4);
+  border-radius: 10px;;
+
+}
+

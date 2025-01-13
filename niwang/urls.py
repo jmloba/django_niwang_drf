@@ -14,6 +14,7 @@ from . import views
 from . import views
 from .views import UserLoginView
 from debug_toolbar.toolbar import debug_toolbar_urls
+from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -23,10 +24,12 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
+    
+    path('auth',obtain_auth_token),
 
     path('admin/', admin.site.urls),
     path('', views.home , name ='home' ),  
-    
+    path('api/', include('api.urls')),
     path('accounts/', include('accounts.urls')),
     path('app_booking/', include('app_booking.urls')),
     path('app_product/', include('app_product.urls')),

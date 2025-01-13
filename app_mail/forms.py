@@ -15,7 +15,6 @@ class ResponseEmail(forms.ModelForm)   :
     fields = {'email_to','email_body'}
     widget={
       "email_to": forms.Textarea(attrs={"class":"form-control",}),
-
       "email_body":forms.Textarea(attrs={"class":"form-control"}),
     }
 

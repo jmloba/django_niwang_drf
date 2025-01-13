@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from app_blog.models import Post
+from app_blog.models import BlogPost
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User,Group,Permission
@@ -10,13 +10,13 @@ from django.contrib.auth.models import User,Group,Permission
 @permission_required("app_blog.view_post",login_url='home', raise_exception=True)
 def postDashboard(request):
 
-  data=Post.objects.all()
+  data=BlogPost.objects.all()
   form = PostForm
   if request.method=='POST':
     post_id = request.POST.get('post-id')
     user_id = request.POST.get('user-id')
     if post_id:
-      post = Post.objects.filter(id=post_id).first()
+      post = BlogPost.objects.filter(id=post_id).first()
       if post and (post.author == request.user or request.user.has_perm('app_blog.delete_post')):
         post.delete()
       return redirect('app_blog:postDashboard')

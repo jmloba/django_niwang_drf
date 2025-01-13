@@ -8,6 +8,16 @@
   justify-content: space-evenly;
 
 }
+#email_me{
+
+  margin :auto 5%;
+  margin-top :4rem;
+}
+
+#email_me h3{
+  color : var(  --color-fb-blue ) ;
+}
+
 #email-listview form{
   background-color: var(-colorgold4);
   padding : 1em 2em;
@@ -21,15 +31,14 @@
   
 }
 
-#email_me h3{
-  color : var(  --color-fb-blue ) ;
-}
+
 #email_me .email-form{
   margin :1em 1em;
   padding :2em 2em;
+  color : black;
 }
 #email_me form{
-  background-color: rgb(241, 209, 209);
+  background-color: var( --body-area-article );
   padding :1em 1em;
   padding :2em 2em;
 }

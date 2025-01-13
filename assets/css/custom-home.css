@@ -5,13 +5,18 @@
 #home .dashboard-user .card{
   background-color: rgb(235, 183, 161);
   border-radius: 10px;
-  width :35% !important;
+  
 }
 
 #home  .dashboard-user {
   justify-content: space-evenly;
   margin :10px 10px;
 } 
+
+
+
+#-------
+
 
 #home .gen-info .card{
   background-color: beige;
@@ -82,3 +87,24 @@
   flex-wrap: wrap;
 }
 
+
+@media (max-width:700px){
+  #home .dashboard-user .card{
+    background-color: rgb(168, 73, 33);
+    border-radius: 10px;
+    
+  }
+ 
+
+}
+@media (max-width:500px){ 
+  #home .dashboard-user{
+    width: 100%
+  }
+  #home .dashboard-user .card{
+    background-color: rgb(135, 186, 59);
+    border-radius: 10px;
+    width :80% !important;
+    
+  }
+}

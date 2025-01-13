@@ -24,11 +24,6 @@ def send_email(request,mail_subject,email_template,email_body):
     
   mail = EmailMessage(mail_subject,message, to=[to_email] )
   mail.send()
-  print('------?>>>>>>>>>>     mail sent')
-
-
-
-
 
 def send_response_email(request,mail_subject,email_template,email_body,response_to,package_amount):
   to_email = response_to
@@ -50,5 +45,3 @@ def send_response_email(request,mail_subject,email_template,email_body,response_
     
   mail = EmailMessage(mail_subject,message, to=[to_email] )
   mail.send()
-  print('------?>>>>>>>>>>     mail sent')
-

@@ -32,7 +32,7 @@
               {% if perms.app_articles.add_article %}  
 
               <div class="item ">
-                <a href="{% url 'app_articles:article_create'%}" class="sub-item">Create Article</a>  
+                <a href="{% url 'app_articles:article_create' %}" class="sub-item">Create Article</a>  
               </div>    
               {% endif%}
 
@@ -42,13 +42,40 @@
             </div>                
 
             <div class="item ">
-              <a href="{% url 'app_articles:articleListMixin' %}" class="sub-item">Articles using mixins</a>  
+              <a href="{% url 'api:articleListMixin' %}" class="sub-item">Articles using mixins</a>  
             </div>                
-            {% endif %}       
+            {% endif %}     
+              
           </div>
 
         </div>  
         {% endif %}
+        {% if perms.app_mail.add_emaildb %} 
+        <div class="item ">
+          <a class="sub-btn">
+            <!-- inserting google icons material-symbols-outlined -->
+            <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
+          &nbsp;
+          Email***
+        
+            <i class="fas fa-angle-right dropdown"></i>
+          </a>
+          <div class="sub-menu">
+            {% if perms.app_mail.add_emaildb %}  
+            <div class="item ">
+              <a href="{% url 'app_mail:email_me' %}" class="sub-item">Create Email</a>  
+            </div> 
+            {%endif %}
+            {% if perms.app_mail.delete_emaildb %}  
+            <div class="item ">
+              <a href="{% url 'app_mail:email-list-view' %}" class="sub-item">View  Email Dashboard</a>  
+            </div> 
+            {%endif %}
+            
+          </div>
+        </div>            
+        {%endif %}
+
         {% if user.user.Programmers %}
           <div class="item ">
             <a class="sub-btn">
@@ -59,6 +86,8 @@
               <i class="fas fa-angle-right dropdown"></i>
             </a>
             <div class="sub-menu">
+
+                            
               <div class="item ">
                 <a href="{% url 'app_product:product-dashboard' %}" class="sub-item">product Dashboard</a>  
               </div> 
@@ -69,7 +98,7 @@
 
               {% if perms.app_product.view_product  %} 
               <div class="item ">
-                <a href="{% url 'app_product:premiumProducts' %}" class="sub-item">test api</a>  
+                <a href="{% url 'api:premiumProducts' %}" class="sub-item">test api</a>  
               </div> 
               {% endif %}
               
@@ -96,34 +125,9 @@
           </div>            
           {%endif %}
 
-          joven *** permission : {{perms.user}}            
-          
+          <!-- joven *** permission : {{perms.user}}            
+           -->
 
-          {% if perms.app_mail.view_emaildb %} 
-          <div class="item ">
-            <a class="sub-btn">
-              <!-- inserting google icons material-symbols-outlined -->
-              <!-- <span class="material-symbols-outlined icon1-submenu">post_add</span> -->
-            &nbsp;
-            Email***
-          
-              <i class="fas fa-angle-right dropdown"></i>
-            </a>
-            <div class="sub-menu">
-              {% if perms.app_mail.add_emaildb %}  
-              <div class="item ">
-                <a href="{% url 'app_mail:email_me' %}" class="sub-item">Create Email</a>  
-              </div> 
-              {%endif %}
-              {% if perms.app_mail.delete_emaildb %}  
-              <div class="item ">
-                <a href="{% url 'app_mail:email-list-view' %}" class="sub-item">View  Email Dashboard</a>  
-              </div> 
-              {%endif %}
-              
-            </div>
-          </div>            
-          {%endif %}
 
 
         {% endif%}  
@@ -148,7 +152,7 @@
               
       {% endif%}  
 
-      <div class="item ">
+      <div class="item logout">
         <a href="{% url 'accounts:logout-view' %}">
           <i class="fas fa-info-circle"></i>Logout
         </a>

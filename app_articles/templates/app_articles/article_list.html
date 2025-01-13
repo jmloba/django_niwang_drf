@@ -1,0 +1,51 @@
+{% extends  'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="article_list">
+  
+  <div class="my-container my-container-para my-container-bg  align-items-center "
+  style="--margin-top:4em; --margin-right:5%; --margin-left: 5%; "    >
+
+      <div class="sec-title">
+        <h4 >My Articles</h4>
+      </div>
+      <div class="article-items">
+        {% for article in articles %}
+        <div class="card" >
+          <img class="card-img-top" src="{{article.thumb.url}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{article.title}}</h5>
+            
+            <p class="card-text"> {{article.snippet}}</p>
+            <div class="article-footer">
+              <div class="view-article-btn">
+                <a class='btn btn-mybtn'    href="{% url 'app_articles:articleDetail' article.id %}" >View Article xxx</a> 
+
+         
+              </div>
+    
+    
+              <div class="text-end">
+                {% if user.user.article_delete%}
+                <a  href="{% url 'articles:article_delete' article.id %}"><i class="bi bi-trash-fill"></i></a>
+                {%endif%}
+              </div>
+            </div>
+  
+          </div>
+      
+        </div>
+        {% endfor %}
+  
+      </div>
+
+    
+  </div>
+
+
+</section>
+
+<link rel="stylesheet" href="{% static 'css/custom-articles.css' %}">
+
+{% endblock %}

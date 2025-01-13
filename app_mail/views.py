@@ -34,12 +34,8 @@ def email_me(request):
       mail_subject= 'Inquiries for Rent' 
       email_template = 'app_mail/email/inquiry_email.html'
       email_body = form.cleaned_data['email_body']
-      
       if user.send_email_trigger :
         send_email(request,mail_subject,email_template, email_body)
-      else : 
-        
-        print(f"\nNo email sent !!! \n useraccess -> send_email_trigger : {user.send_email_trigger} ")  
       return redirect('home')
   else:
     form=CreateEmailForm()
@@ -65,7 +61,6 @@ def email_list(request):
       mail_subject= 'Response from Inquiry' 
       email_template = 'app_mail/email/inquiry_response.html'
       email_body = form.cleaned_data['email_body']
-      print(f'sending to {response_to} ')
       send_response_email(request,mail_subject,email_template, email_body,response_to)
       return redirect('home')
   else:    
@@ -86,16 +81,10 @@ def email_list_view(request):
       email_to        = request.POST.get('form_data_emailto')
       email_body      = request.POST.get('form_data_body')
       package_amount  = request.POST.get('form_data_amount')
-
-      print (f'***request email : {email_to}')
-      print (f'***request body : {email_body}')
-      print (f'***request amount : {package_amount}')
       if user.send_email_trigger :
         send_email_to_queries (request,email_from,email_to,email_body,package_amount)  
       else :
         print(f'\nReply to query -> sending email :trigger is off')   
-
-
       instance = EmailANS.objects.create(
         email_from = email_from, 
         email_to = email_to, 
@@ -107,16 +96,10 @@ def email_list_view(request):
       
         )
       instance.save()
-
       sid_id =request.POST.get("sid")
-
       emaildb=EmailDB.objects.get(pk=sid_id)
       emaildb.replied=True
-      
-
       emaildb.save()
-
-      print(f'returning status 1')
       return JsonResponse({"status": 1})
     
   context = {'emails':emails, 'form':form}
@@ -128,14 +111,10 @@ def send_email_to_queries (request,email_from,email_to,email_body,package_amount
       mail_subject= 'Response from Inquiry' 
       email_template = 'app_mail/email/inquiry_response.html'
       email_body =email_body
-      print(f'sending to {response_to} ')
-
       send_response_email(request,mail_subject,email_template, email_body,response_to,package_amount)
 
 @login_required(login_url='accounts:login-view')
 def reply_email(request):
-  print('pass  reply_email')
-  pass
   if request.method=='POST':
     id =request.POST.get("sid")
     emaildb=EmailDB.objects.get(pk=id)
@@ -150,7 +129,6 @@ def emailin_delete(request):
   if request.method == "POST":  
     id = request.POST.get("sid")
     email = EmailDB.objects.get(pk=id)
-    print(f'email to delete : {email}')
     email.delete()
     return JsonResponse({"status": 1})
   else:
@@ -158,24 +136,15 @@ def emailin_delete(request):
 
 @login_required(login_url='accounts:login-view')
 def answered_email_toggle (request) :
-  print(f'views answered email toggle')
+  
   if request.method == "POST":  
     id = request.POST.get("stuid")
-    print(f' text')
     email = EmailDB.objects.get(pk=id)
     email.replied=False
     email.save()
-    print(f'\n\n--->>>>email--saved')
-
-
     return JsonResponse({"status": 1})
   else:
-    print(f'views answered email toggle: reque3st is not post')
     return JsonResponse({"status": 0})  
-
-
-def email_reply(request)  :
-  pass
 
 @login_required(login_url='accounts:login-view')
 def answered_email(request):
@@ -184,3 +153,6 @@ def answered_email(request):
   context={'email_ans':email_ans}
   return render(request,'app_mail/answered_email.html', context )
 
+
+def email_reply(request)  :
+  pass

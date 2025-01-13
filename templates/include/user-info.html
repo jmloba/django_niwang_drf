@@ -1,7 +1,11 @@
-<div class ="user-info">
-  <div class="user-info-details">
+
+
+
+<div class ="user-info" id="user-info-logout">
+  <div class="user-info-details" >
       <a href="{% url 'accounts:logout-view' %}">
-        <button type="submit" class="btn btn-primary" > <i class="fas fa-info-circle"></i>Logout <span>{{request.user}}</span></button>
+        <button id="button-logout" type="submit" class="btn btn-primary" > <span>{{request.user}}</span> &nbsp <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
       
       </a>
     
@@ -12,3 +16,4 @@
 
 
 </div>
+

@@ -1,7 +1,7 @@
 
 
 from django.contrib import admin
-from app_blog.models import Post
+from app_blog.models import BlogPost
 from django.contrib.auth.models import Permission  , User
 
 # Register your models here.
@@ -14,6 +14,6 @@ class Postdmin(admin.ModelAdmin):
   fieldsets=()
 
 
-admin.site.register(Post,Postdmin )
+admin.site.register(BlogPost,Postdmin )
 admin.site.register(Permission )  
 

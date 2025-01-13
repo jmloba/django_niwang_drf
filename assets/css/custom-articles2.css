@@ -1,0 +1,231 @@
+.my-container.my-container-para{
+  margin-top :5px;
+}
+/* img{
+  display : block;
+  max-width : 100%;
+  height : auto;
+
+} */
+.card__img{
+  /* width:348px;  */
+  width: 90%;
+  height : auto;  
+  border-radius: 10px;
+  margin: auto 1rem;
+}
+
+.text-end a i{
+  color : white;
+}
+
+/* card */
+
+.container{
+    display : grid;
+    place-items : center;
+    margin-inline :1.5rem;
+    padding-block: 5rem;
+    /* background-color :rgba(135, 10, 10, 0.494) */
+
+}
+.article-container{
+  background-color: var(--body-area-article);
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin:auto;
+  margin-top : 3rem;
+  padding :1rem;
+  width: 90%;
+  border-radius: 20px;
+}
+
+.card__container{
+  /* background-color: brown; */
+  display : grid;
+  row-gap :1rem;
+  margin-bottom : 2rem;
+  align-items:flex-end ;
+ }
+.card__article{
+  position : relative;
+  overflow:hidden;
+}
+
+.card__data{
+  width : 280px;
+  
+  background-color:rgb(242, 208, 208);
+  padding : 1.5rem 2rem;
+  box-shadow: 0 8px 24px rgba(189, 153, 9, 0.748);
+  border-radius : 1rem;
+  position : absolute;
+  bottom :-9rem;
+  left : 0;
+  right : 0;
+  margin-inline: auto ;
+  opacity :0;
+  transition: opacity 1s 1s;
+  z-index: 100;
+
+}
+.card__data h2{
+  color :rgb(113, 72, 6);
+  overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+
+}
+.card__description {
+  display : block;
+  font-size : var(--small-font-size );
+  margin-bottom :.25rem;
+
+}
+.card__title{
+  font-size :var(--h2-font-size);
+
+  font-weight : 500;
+  color : var(--title-color);
+  margin-bottom : .75rem;
+}
+.card__button{
+  text-decoration: None;
+  font-size: var(--card-button-font-size) !important;
+  font-weight: 400;
+  font-size: 12px;
+  color : rgba(40, 17, 213, 0.845) !important;
+}
+.card__button:hover{
+  text-decoration: underline;
+  
+  color :rgb(182, 17, 17)!important;
+  font-size: 18px;
+
+
+}
+
+/* naming animation */
+.card__article:hover .card__data{
+  animation : show-data 1s forwards;
+  opacity : 1;
+  transition: opacity .7s;
+
+}
+.card__article:hover{
+animation : remove-overflow  2s forwards;
+margin-bottom: 3rem;
+}
+
+.card__article:not(:hover){
+  animation : show-overflow 2s forwards;
+}
+.card__article:not(:hover) .card_data{
+  animation : remove-overflow 1s forwards;
+}
+
+
+/* card animation */
+@keyframes show-data {
+  50%{
+    transform: translateY(-10rem);
+
+  }
+  100%{
+    transform: translateY(-7rem);
+  }
+
+  
+}
+@keyframes remove-overflow{
+  to{
+    overflow: initial;
+  }
+}
+@keyframes remove-data{
+  0%{
+    transform: translateY(-7rem);
+  }
+  50%{
+    transform: translateY(-10rem);
+  }
+  100%{
+    transform: translateY(.5rem);
+  }
+}
+@keyframes show-overflow{
+  0%{
+    /* overflow: initial; */
+    overflow: hide;
+    pointer-events: none;
+  }
+  50%{
+    overflow: hidden;
+  }
+}
+
+/* break points for small devices */
+/* small devices */
+@media screen and (min-width:390px) {
+  .container{
+    margin-inline :1rem;
+   }
+ .card__container{
+  /* background-color:rgb(222, 219, 38); */
+  grid-template-columns: repeat(2, 1fr);
+  column-gap :.5rem;
+ }
+ .card__article{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+ }
+ .card__data{
+  width : 150px;
+
+  padding : 1rem;
+ }
+}
+
+/* medium devices */
+@media screen and (min-width:700px) { 
+  .container{
+    margin-inline :1rem;
+    width:90%;
+   }
+  .card__container{
+    /* background-color: rgb(185, 185, 136); */
+    grid-template-columns: repeat(3, 1fr);
+    column-gap :1.5rem;
+  }
+  .card__data{
+    /* width : 200px; */
+    width : 80%;
+    padding : 1rem;
+   }
+}
+
+
+/* large devices */
+@media screen and (min-width:1120px) { 
+  .container {
+    max-height : 100vh;
+  }
+  .card__container{
+    /* background-color: aqua; */
+    grid-template-columns: repeat(4, 1fr);
+    column-gap :1.5rem;
+    
+
+  }
+
+
+  .card__data{
+    width : 300x;
+    padding-inline: 2.5rem;
+  }
+}
