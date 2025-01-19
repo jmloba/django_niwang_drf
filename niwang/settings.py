@@ -22,6 +22,10 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS =config("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS =['*']
+CSRF_TRUSTED_ORIGINS=["http://*.on-acorn.io","https://*.on-acorn.io"]
+
+
 
 # Application definition
 
@@ -42,6 +46,7 @@ INSTALLED_APPS = [
     'app_members',
     'app_mail',
     'api',
+    # 'drf_yasg',
 
     'debug_toolbar',
     # pip install djangorestframework-xml
@@ -106,16 +111,33 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # },
+
       'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':     config('DB_NAME'),
         'USER':     config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
+
     },    
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME':   config('DB_NAME'),
+    #     'USER':     config('DB_USER'),
+    #     'PASSWORD':  config('DB_PASSWORD'),
+    #     'HOST':  config('DB_HOST'),
+    #     'PORT':  os.getenv("MARIADB_PORT",3306),
+        
+    # },    
+
 
 }
 
+# DATABASES['default']=dj_database_url.parse('postgresql://niwang_drf_user:0SD41bUXYrwS9IHBkn8qgaSqajU1gp1Q@dpg-cu68led6l47c73bv6380-a.singapore-postgres.render.com/niwang_drf')
+
+#external from render
+# postgresql://niwang_drf_user:0SD41bUXYrwS9IHBkn8qgaSqajU1gp1Q@dpg-cu68led6l47c73bv6380-a.singapore-postgres.render.com/niwang_drf
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -235,5 +257,5 @@ DEBUG_TOOLBAR_PANELS = [
 ]
 
 # Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())

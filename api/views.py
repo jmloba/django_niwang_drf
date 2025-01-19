@@ -14,15 +14,36 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.response import Response
 
 from app_articles.models import Article
-from api.serializers import ArticleSerializer,ProductSerializer, UserSerializer
+from app_blog.models import BlogPost
+
+from api.serializers import ArticleSerializer,ProductSerializer, UserSerializer, BlogPostSerializer
 from app_product.models import Product
 
+#--------- app_blog
+
+class BlogPostCreate(generics.ListCreateAPIView):
+  queryset= BlogPost.objects.all()
+  serializer_class = BlogPostSerializer
+  # def delete(self,request, *args, **kwargs):
+  #   BlogPost.objects.all().delete()
+  #   return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+
+
+
+class BlogPostRetreiveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):   
+  queryset= BlogPost.objects.all()
+  serializer_class = BlogPostSerializer
+  lookup_field='pk'
+
+
+
+#--------- product
 
 # Create your views here.
 @api_view(['GET','POST'])
-@authentication_classes((TokenAuthentication,))
+# @authentication_classes((TokenAuthentication,))
 def api_ProductList(request):
   query = Product.objects.all()
   serializer_class = ProductSerializer(query, many=True)

@@ -1,4 +1,5 @@
 
+
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from app_articles.models import Article
@@ -7,6 +8,7 @@ from app_blog.models import BlogPost
 from app_booking.models import Room, Booking
 from app_mail.models import EmailANS, EmailDB 
 from app_product.models import Product, ProductCategory
+
 class ArticleSerializer( serializers.ModelSerializer):
   class Meta:
     model = Article

@@ -1,12 +1,17 @@
 
 from django.urls import include, re_path,path
-from api.views import DetailArticleMixin,ListArticlesMixins, generic_UserList, generic_ProductList, DetailProductMixins, ListProductsGenerics, DetailProductGenerics, DetailCreateProductGenerics, ProductListCreateAPIView, PremiumProducts, ListProductsMixins
+from api.views import DetailArticleMixin,ListArticlesMixins, generic_UserList, generic_ProductList, DetailProductMixins, ListProductsGenerics, DetailProductGenerics, DetailCreateProductGenerics, ProductListCreateAPIView, PremiumProducts, ListProductsMixins, BlogPostCreate,BlogPostRetreiveUpdateDestroy
 
 app_name='api'
 from api import views
 
 urlpatterns = [
-      
+  # blogpost
+      path('blogpost/',BlogPostCreate.as_view(), name='BlogPost'),
+
+      path('blogpost/<int:pk>',BlogPostRetreiveUpdateDestroy.as_view(), name='BlogPostRUD'),
+
+    
     path('articledetailMixin/<int:pk>',DetailArticleMixin.as_view(), name='articledetailMixin'),
 
     

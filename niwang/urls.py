@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+
 
 from . import views
 from .views import UserLoginView
@@ -49,6 +49,7 @@ urlpatterns = [
     path('signup/', views.signup , name='signup'),       
     path('test_token/', views.test_token , name='test_token'),       
     path('loginview/', UserLoginView.as_view() , name='loginview'),       
+
 
 ]
 
